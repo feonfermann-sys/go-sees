@@ -273,7 +273,9 @@
   }
 
   /* ---------- explore modes: stage (below) or one of the alternatives in alt.js ---------- */
+  const phone = matchMedia('(max-width:700px)').matches;
   let xmode = 'book'; try { xmode = localStorage.getItem('gs-explore') || 'book'; } catch (e) {}
+  if (phone) xmode = 'site'; /* phones get the clean scrolling version */
   if (!['stage', 'rail', 'minimal', 'editorial', 'book', 'mac', 'site'].includes(xmode) || !window.ALT) xmode = 'stage';
   const TR = [['wipe', 'Wipe'], ['fade', 'Fade'], ['push', 'Push'], ['zoom', 'Zoom'], ['iris', 'Iris']], SC = [['step', 'Step'], ['scrub', 'Scrub']];
   const ls = (k, d, ok) => { try { const v = localStorage.getItem(k); return ok.includes(v) ? v : d; } catch (e) { return d; } };
@@ -487,7 +489,7 @@
       const paras = s.paras.map((t, k) => `<p class="${i === 0 && k === 0 ? 'lead2' : ''}" data-path="essay.sections.${i}.paras.${k}" data-rich="1">${rich(t)}</p>`).join('');
       return `<section id="sec-${esc(s.id)}" data-photo="${esc(s.photo || '')}">${head}${paras}</section>`;
     }).join('');
-    const refs = `<section id="sec-references"><h2>References</h2>${C.essay.references.map((r, k) => `<p style="font-size:14px;line-height:1.55;margin:0 0 12px"><span data-path="essay.references.${k}.text">${esc(r.text)}</span>${r.url ? ` <a class="mono" style="color:var(--rust);text-decoration:none;font-size:10px" href="${esc(r.url)}" target="_blank" rel="noopener">open</a>` : ''}</p>`).join('')}</section>`;
+    const refs = `<section id="sec-references"><h2>References</h2>${C.essay.references.map((r, k) => `<p style="font-size:14px;line-height:1.55;margin:0 0 12px"><span data-path="essay.references.${k}.text">${esc(r.text)}</span>${r.url ? ` <a class="mono" style="color:var(--rust);text-decoration:none;font-size:10px" href="${esc(r.url)}" target="_blank" rel="noopener">open</a>` : ''}</p>`).join('')}<p class="disc" data-path="site.disclosure">${esc((C.site || {}).disclosure || '')}</p></section>`;
     const FIGP = Object.values(C.essay.figures || {}); const figs = [...new Set([...secs.map(s => s.photo), ...FIGP].filter(Boolean))].map(f => `<img data-f="${f}" src="${src(f)}" alt="">`).join('');
     app.innerHTML = `${topbar('essay')}<div class="prog"><i id="progbar"></i></div><div class="essay"><nav class="toc"><div class="mono" style="margin-bottom:6px">Contents</div>${toc}</nav>
       <article class="col"><div class="mono">Full essay</div><h1 data-path="site.title">${esc(C.site.title)}</h1>${art}${refs}</article>

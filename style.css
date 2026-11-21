@@ -476,3 +476,17 @@ input,textarea{-webkit-user-select:text !important;user-select:text !important}
 
 /* published copy: nobody can edit */
 body.static .editbar,body.static #editToggle{display:none !important}
+
+/* ---------- phones ---------- */
+@media (max-width:700px){
+  .xsw,#xtr,.xtr,.editbar,#progtext,.xrail{display:none !important}
+  .top{padding-left:16px;padding-right:16px}
+  .sidecol{position:fixed !important;left:0;right:0;bottom:0;top:auto !important;width:auto !important;display:flex;align-items:center;gap:12px;padding:8px 16px calc(8px + env(safe-area-inset-bottom));background:rgba(255,255,255,.97);border-top:1px solid #ececec;z-index:20}
+  .sidecol .sfig{position:relative;flex:none;width:40px;height:56px;margin:0}
+  .sidecol .sfigcap{font-size:10px;line-height:1.4;margin:0;color:#777}
+  .sidecol .hint{display:none}
+  .col{padding-bottom:100px}
+}
+
+.disc{margin:34px 0 0;font:400 9px/1.5 var(--monof);letter-spacing:.04em;color:#a2a2a0;max-width:46em}
+.col p.disc,#sec-references p.disc,.xs-refs + p.disc,.rf p.disc{font:400 9.5px/1.55 var(--monof) !important;letter-spacing:.03em !important;color:#a6a6a4 !important;margin:30px 0 0 !important;max-width:42em}

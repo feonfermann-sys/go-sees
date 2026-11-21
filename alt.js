@@ -207,7 +207,7 @@
     const REFS = C.essay.references || [], MID = Math.floor(REFS.length * 0.42);
     const refs = (side, s) => {
       const part = side === 'l' ? REFS.slice(0, MID) : REFS.slice(MID), off = side === 'l' ? 0 : MID;
-      return `<div class="pg rf"><div class="bcol">${side === 'l' ? `<div class="k mono">References</div><div class="hh"><h2 class="bk-h">Bibliography</h2></div>` : `<div class="k mono">References, continued</div>`}<ol class="rl x-scroll" start="${off + 1}">${part.map((r, k) => `<li><span data-path="essay.references.${off + k}.text">${esc(r.text)}</span>${r.url ? ` <a href="${esc(r.url)}" target="_blank" rel="noopener">open ↗</a>` : ''}</li>`).join('')}</ol></div>${fl(s, side)}</div>`;
+      return `<div class="pg rf"><div class="bcol">${side === 'l' ? `<div class="k mono">References</div><div class="hh"><h2 class="bk-h">Bibliography</h2></div>` : `<div class="k mono">References, continued</div>`}<ol class="rl x-scroll" start="${off + 1}">${part.map((r, k) => `<li><span data-path="essay.references.${off + k}.text">${esc(r.text)}</span>${r.url ? ` <a href="${esc(r.url)}" target="_blank" rel="noopener">open ↗</a>` : ''}</li>`).join('')}</ol>${side === 'r' ? `<p class="disc" data-path="site.disclosure">${esc((C.site || {}).disclosure || '')}</p>` : ''}</div>${fl(s, side)}</div>`;
     };
     /* the two argument pages (definitions, the dilemma) are set quietly, like the reference spreads */
     const qInner = (i, side) => {
@@ -575,7 +575,7 @@
     }
     function sources() {
       return `<article class="xs-art"><nav class="xs-crumb mono"><a data-xsgo="1">Home</a><i>/</i><span>Sources</span></nav><div class="mono xs-kick">Sources</div><h1 class="xs-h1" data-path="sources.lead">${esc((C.sources || {}).lead || 'Where this comes from.')}</h1><p class="x-lede" data-path="sources.body">${esc((C.sources || {}).body || '')}</p>
-        <ul class="xs-refs">${C.essay.references.map((r, k) => `<li><span data-path="essay.references.${k}.text">${esc(r.text)}</span>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">Open ↗</a>` : ''}</li>`).join('')}</ul></article>`;
+        <ul class="xs-refs">${C.essay.references.map((r, k) => `<li><span data-path="essay.references.${k}.text">${esc(r.text)}</span>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">Open ↗</a>` : ''}</li>`).join('')}</ul><p class="disc" data-path="site.disclosure">${esc((C.site || {}).disclosure || '')}</p></article>`;
     }
     function show(n) {
       const key = n === 's' ? 's' : Number(n); if (cur === key) return; cur = key; G.stopClips(main);
