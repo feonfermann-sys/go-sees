@@ -207,7 +207,7 @@
     const REFS = C.essay.references || [], MID = Math.floor(REFS.length * 0.42);
     const refs = (side, s) => {
       const part = side === 'l' ? REFS.slice(0, MID) : REFS.slice(MID), off = side === 'l' ? 0 : MID;
-      return `<div class="pg rf"><div class="bcol">${side === 'l' ? `<div class="k mono">References</div><div class="hh"><h2 class="bk-h">Bibliography</h2></div>` : `<div class="k mono">References, continued</div>`}<ol class="rl x-scroll" start="${off + 1}">${part.map((r, k) => `<li><span data-path="essay.references.${off + k}.text">${esc(r.text)}</span>${r.url ? ` <a href="${esc(r.url)}" target="_blank" rel="noopener">open ↗</a>` : ''}</li>`).join('')}</ol>${side === 'r' ? `<p class="disc" data-path="site.disclosure">${esc((C.site || {}).disclosure || '')}</p>` : ''}</div>${fl(s, side)}</div>`;
+      return `<div class="pg rf"><div class="bcol">${side === 'l' ? `<div class="k mono">References</div><div class="hh"><h2 class="bk-h">Bibliography</h2></div>` : `<div class="k mono">References, continued</div>`}<ol class="rl x-scroll" start="${off + 1}">${part.map((r, k) => `<li><span data-path="essay.references.${off + k}.text">${esc(r.text)}</span>${r.url ? ` <a href="${esc(r.url)}" target="_blank" rel="noopener">open ↗</a>` : ''}</li>`).join('')}</ol>${side === 'l' ? `<p class="disc" data-path="site.disclosure">${esc((C.site || {}).disclosure || '')}</p>` : ''}</div>${fl(s, side)}</div>`;
     };
     /* the two argument pages (definitions, the dilemma) are set quietly, like the reference spreads */
     const qInner = (i, side) => {
@@ -280,13 +280,29 @@
         cl.className = 'bkx lensclone'; cl.style.cssText = `position:absolute;left:0;top:0;margin:0;transition:none;transform:none;perspective:none;width:${bkx.offsetWidth}px;height:${bkx.offsetHeight}px;pointer-events:none`;
         inner.appendChild(cl); on = true; ate = true; lens.hidden = false; upd(cx, cy);
       };
-      const ts = e => { if (e.touches.length !== 1 || e.target.closest('button,a,.xm-bar,.card')) return; sx = e.touches[0].clientX; sy = e.touches[0].clientY; clearTimeout(timer); timer = setTimeout(() => begin(sx, sy), 300); };
-      const tm = e => { const t = e.touches[0]; if (on) { e.preventDefault(); upd(t.clientX, t.clientY); } else if (Math.hypot(t.clientX - sx, t.clientY - sy) > 14) clearTimeout(timer); };
-      const te = () => { clearTimeout(timer); if (on) { on = false; lens.hidden = true; inner.innerHTML = ''; } };
-      const eat = e => { if (ate) { ate = false; e.stopImmediatePropagation(); } };
+      let t0 = 0, touching = 0;
+      const hide = () => { clearTimeout(timer); if (on) { on = false; lens.hidden = true; inner.innerHTML = ''; } };
+      const ts = e => { if (e.touches.length !== 1 || e.target.closest('button,a,.xm-bar,.card')) { hide(); return; } sx = e.touches[0].clientX; sy = e.touches[0].clientY; t0 = performance.now(); clearTimeout(timer); timer = setTimeout(() => begin(sx, sy), 300); };
+      const tm = e => { const t = e.touches[0]; if (!t) { hide(); return; } if (on) { e.preventDefault(); upd(t.clientX, t.clientY); } else if (Math.hypot(t.clientX - sx, t.clientY - sy) > 14) clearTimeout(timer); };
+      /* one place decides what a lift of the finger means: close the lens, or, after a quick sideways swipe, turn the page */
+      const te = e => {
+        touching = e.touches ? e.touches.length : 0;
+        const was = on, ct = e.changedTouches && e.changedTouches[0];
+        clearTimeout(timer); hide();
+        if (was) { e.stopImmediatePropagation(); return; }
+        if (ct && performance.now() - t0 < 700 && !(e.target.closest && e.target.closest('button,a,.xm-bar,.card'))) {
+          const dx = ct.clientX - sx, dy = ct.clientY - sy;
+          if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.3) step(dx < 0 ? 1 : -1);
+        }
+      };
+      const count = e => { touching = e.touches.length; };
       bw.addEventListener('touchstart', ts, { passive: true }); bw.addEventListener('touchmove', tm, { passive: false });
-      bw.addEventListener('touchend', te); bw.addEventListener('touchcancel', te); window.addEventListener('touchend', eat, true);
-      lensStop = () => { window.removeEventListener('touchend', eat, true); window.removeEventListener('resize', fit); };
+      window.addEventListener('touchstart', count, true); window.addEventListener('touchend', te, true); window.addEventListener('touchcancel', te, true);
+      const beat = setInterval(() => { if (on && touching === 0) hide(); }, 300);
+      document.addEventListener('visibilitychange', hide);
+      const blurArrow = e => { const a = e.target.closest && e.target.closest('.xm-arrow'); if (a) a.blur(); };
+      bw.addEventListener('click', blurArrow);
+      lensStop = () => { window.removeEventListener('touchstart', count, true); window.removeEventListener('touchend', te, true); window.removeEventListener('touchcancel', te, true); window.removeEventListener('resize', fit); document.removeEventListener('visibilitychange', hide); clearInterval(beat); };
     }
     const put = (el, html) => { el.innerHTML = html || ''; el.classList.toggle('empty', !html); };
     const face = (k, html) => `<div class="fc ${k}">${html || ''}</div>`;
