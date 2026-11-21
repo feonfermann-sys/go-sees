@@ -1,0 +1,596 @@
+{
+  "site": {
+    "title": "Juergen's Girls.",
+    "subtitle": "An interactive reading of Go-Sees.",
+    "kicker": "Juergen Teller · London · 1998–99",
+    "readTimes": "",
+    "dateStart": "May 1998",
+    "dateEnd": "May 1999",
+    "byline": "An interactive reading by Felix Onfermann"
+  },
+  "cards": {
+    "skidmore": {
+      "kind": "source",
+      "short": "Skidmore, 2017",
+      "year": "2017",
+      "text": "Skidmore, M. (2017, November 24). When Juergen Teller photographed 1990s go-sees. AnOther.",
+      "note": "Source for the 462 visits and for the first-name-only credits.",
+      "url": "https://www.anothermag.com/art-photography/10390/when-juergen-teller-photographed-1990s-go-see"
+    },
+    "teller2008": {
+      "kind": "source",
+      "short": "Teller, 2008",
+      "year": "2008",
+      "text": "Juergen Teller discussing “Go-Sees” and ping-pong. Excerpt from a Tate interview, 2008, reproduced by American Suburb X (2015, December 21).",
+      "note": "Source for “send anyone”, “sort of democratic”, the trainers and high heels, and the power he held as a man and as a photographer.",
+      "url": "https://americansuburbx.com/2015/12/juergen-teller-discussing-go-sees-and-ping-pong.html"
+    },
+    "publicdelivery": {
+      "kind": "source",
+      "short": "Public Delivery, 2019",
+      "year": "2019",
+      "text": "Public Delivery. (2019, December 5). Juergen Teller’s Go-Sees.",
+      "note": "Source for the setting, the lack of retouching, the “weird idea” quote and the mostly teenage models.",
+      "url": "https://publicdelivery.org/juergen-teller-go-sees/"
+    },
+    "goldin": {
+      "kind": "source",
+      "short": "Goldin & Rouse, 2000",
+      "year": "2000",
+      "text": "Goldin, C., & Rouse, C. (2000). Orchestrating impartiality: The impact of “blind” auditions on female musicians. American Economic Review, 90(4), 715–741.",
+      "note": "When US orchestras began auditioning behind a screen, women’s chances of advancing improved."
+    },
+    "roberts": {
+      "kind": "source",
+      "short": "Roberts, 1993",
+      "year": "1993",
+      "text": "Roberts, M. L. (1993). Samson and Delilah revisited: The politics of women’s fashion in 1920s France. The American Historical Review, 98(3), 657–684.",
+      "note": "Fashion as “a maker as well as a marker” of identity."
+    },
+    "simmel": {
+      "kind": "source",
+      "short": "Simmel, 1957",
+      "year": "1957",
+      "text": "Simmel, G. (1957). Fashion. American Journal of Sociology, 62(6), 541–558. (Originally published 1904.)",
+      "note": "Fashion lets us belong and stand out at once."
+    },
+    "mulvey": {
+      "kind": "source",
+      "short": "Mulvey, 1975",
+      "year": "1975",
+      "text": "Mulvey, L. (1975). Visual pleasure and narrative cinema. Screen, 16(3), 6–18.",
+      "note": "Her argument in one line: mainstream images give the woman to be looked at and the man the look."
+    },
+    "holla": {
+      "kind": "source",
+      "short": "Holla, 2018",
+      "year": "2018",
+      "text": "Holla, S. M. (2018). Aesthetic objects on display: The objectification of fashion models as a situated practice.",
+      "note": "Castings as the place where models are objectified in several ways at once. Journal and pages still to confirm.",
+      "url": "https://doi.org/10.1177/1464700117734730"
+    },
+    "entwistle": {
+      "kind": "source",
+      "short": "Entwistle & Wissinger, 2006",
+      "year": "2006",
+      "text": "Entwistle, J., & Wissinger, E. (2006). Keeping up appearances: Aesthetic labour and identity in the fashion modelling industries of London and New York. The Sociological Review, 54(4), 774–794.",
+      "note": "How models manage their bodies for work in an insecure freelance market.",
+      "url": "https://doi.org/10.1111/j.1467-954X.2006.00671.x"
+    },
+    "hoppe": {
+      "kind": "source",
+      "short": "Hoppe, 2022",
+      "year": "2022",
+      "text": "Hoppe, A. D. (2022). The microsociology of aesthetic evaluation: Selecting runway fashion models. Qualitative Sociology, 45(1), 63–87.",
+      "note": "How selection runs on height, the walk and body size. Also cited for unpaid castings.",
+      "url": "https://doi.org/10.1007/s11133-021-09496-x"
+    },
+    "mernissi": {
+      "kind": "source",
+      "short": "Mernissi, 2001",
+      "year": "2001",
+      "text": "Mernissi, F. (2001). Le harem et l’Occident.",
+      "note": "The “Western harem”, cited via the lecture slides. Pages 205 to 207 still to check."
+    },
+    "fragile": {
+      "kind": "quote",
+      "short": "Teller on the models",
+      "text": "“Some looked really fragile, anorexic, standing there in the middle of the road with their book in their hands. I was thinking, ‘I can’t believe it, it’s insane.’”",
+      "cite": "Juergen Teller, looking at the portraits twenty years later. Public Delivery, 2019.",
+      "url": "https://publicdelivery.org/juergen-teller-go-sees/"
+    },
+    "weird": {
+      "kind": "quote",
+      "short": "Teller on the idea",
+      "text": "“I thought it was a weird idea – girls coming to see me as a man.”",
+      "cite": "Juergen Teller. Public Delivery, 2019 (attributed by placement on the page).",
+      "url": "https://publicdelivery.org/juergen-teller-go-sees/"
+    },
+    "tate-video": {
+      "kind": "video",
+      "short": "Tate video",
+      "youtube": "QY0CCj4ujww",
+      "start": 0,
+      "text": "Juergen Teller – Studio Visit | TateShots",
+      "cite": "Tate, on YouTube. Start time of the Go-Sees part still to confirm.",
+      "end": 0
+    },
+    "gaze": {
+      "kind": "image",
+      "short": "Gaze",
+      "text": "They look straight into the lens, mostly unsmiling. No stylist, no set."
+    },
+    "down": {
+      "kind": "image",
+      "short": "Angle",
+      "text": "The camera looks down at her. She looks up."
+    },
+    "tate-power": {
+      "kind": "video",
+      "short": "Teller: the power",
+      "youtube": "QY0CCj4ujww",
+      "start": 166,
+      "end": 186,
+      "segments": "",
+      "text": "The power he held as a man and as a photographer.",
+      "cite": "Tate, TateShots, “Juergen Teller – Studio Visit”. Cut for this page; timing set from the video’s auto-captions, adjust in Cards."
+    },
+    "tate-choose": {
+      "kind": "video",
+      "short": "Teller: send me everyone",
+      "youtube": "QY0CCj4ujww",
+      "start": 35,
+      "end": 102,
+      "segments": "",
+      "text": "Teller, on turning it upside down: “just send me everyone”.",
+      "cite": "Tate, TateShots, “Juergen Teller – Studio Visit”. Cut for this page; timing set from the video’s auto-captions, adjust in Cards."
+    },
+    "door-quote": {
+      "kind": "quote",
+      "short": "Teller on the door",
+      "text": "“…and then within that I let them do whatever they wanted.”",
+      "cite": "Juergen Teller, TateShots (words from the video’s auto-captions).",
+      "url": "https://www.youtube.com/watch?v=QY0CCj4ujww"
+    },
+    "timeout": {
+      "kind": "source",
+      "short": "Time Out, 2017",
+      "year": "2017",
+      "text": "Frankel, E. (2017, November 30). Juergen Teller: Go-Sees, Bubenreuth Kids and a Fairytale About a King. Time Out London.",
+      "note": "“His whole career as a fine art and fashion photographer has been spent undermining the big norms of beauty and aesthetics.”",
+      "url": "https://www.timeout.com/london/art/juergen-teller-go-sees-bubenreuth-kids-and-a-fairytale-about-a-king"
+    },
+    "teller-artbasel": {
+      "kind": "video",
+      "short": "Teller: my first conceptual project",
+      "youtube": "Wim_CwrsZiE",
+      "start": 506,
+      "end": 668,
+      "segments": "506-527, 584-668",
+      "text": "Teller, on Go-Sees: “the first moment when I started to work conceptually”.",
+      "cite": "Art Basel, “Conversations | The 90s: Juergen Teller”, guest curated by Edward Enninful. Cut for this page; timing set from the video’s auto-captions, adjust in Cards."
+    },
+    "system-hu": {
+      "kind": "quote",
+      "short": "A casting director on the standard",
+      "text": "Of the models that agencies and training programmes send her: “they're tall and skinny. That's the main requirement.”",
+      "cite": "Denise Hu, casting director, in conversation with Blake Abbie. System Magazine, issue 20.",
+      "url": "https://system-magazine.com/issues/issue-20/faces-denise-hu-casting-director-blake-abbie"
+    }
+  },
+  "book": [
+    {
+      "id": "hero",
+      "scene": "hero",
+      "dark": 1,
+      "kicker": "May 1998 · West London",
+      "lead": "A young model stands at a doorway in West London with her portfolio under her arm. A German man opens the door and takes a picture.",
+      "count": 462,
+      "countLabel": "{{s:skidmore|times in about a year}}",
+      "body": "Is *Go-Sees* a democratisation of the model, or the record of her exploitation by yet another male-gazing photographer?",
+      "photo": "g22",
+      "caption": "Go-Sees, 1998–99",
+      "bookTitle": "Intro."
+    },
+    {
+      "id": "dilemma",
+      "scene": "dilemma",
+      "kicker": "Two definitions",
+      "defs": [
+        {
+          "w": "Democratise?",
+          "t": "To open access equally instead of choosing only those one likes: to let anyone through the door, whatever they look like and whoever sent them.",
+          "pos": "verb"
+        },
+        {
+          "w": "Exploit?",
+          "t": "To benefit from {{v:fragile|someone’s vulnerability}} without giving a fair return: to use another person’s youth, need or dependence for one’s own gain.",
+          "pos": "verb"
+        }
+      ],
+      "body": "Both words have been used to describe *Go-Sees*, and each can be defended with evidence. The question is which of them holds.",
+      "photo": "g09",
+      "quote": "fragile",
+      "defsIntro": "",
+      "defsOutro": ""
+    },
+    {
+      "id": "thesis",
+      "scene": "thesis",
+      "dark": 0,
+      "kicker": "The dilemma",
+      "leftLead": "Democratic in form.",
+      "rightLead": "Unequal in structure.",
+      "leftItems": [
+        "Teller does not choose.",
+        "He does not impose an identity.",
+        "He photographs them in reality."
+      ],
+      "rightItems": [
+        "The door is his.",
+        "It started before the door.",
+        "The models carry the cost."
+      ],
+      "leftGoto": [
+        4,
+        5,
+        6
+      ],
+      "rightGoto": [
+        7,
+        8,
+        9
+      ],
+      "lead": "Is Go-Sees democratic, or unequal?",
+      "long": "We are thus faced with a dilemma. Read *Go-Sees* as democratic, and we fail to explain who holds the camera and the power over their careers. Read it as exploitative, and we fail to explain why the images refuse to flatter. Each reading explains what the other cannot."
+    },
+    {
+      "id": "ia",
+      "scene": "choose",
+      "kicker": "I. Admittedly · A",
+      "clip": "tate-choose",
+      "photo": "g02",
+      "caption": "Catherine Maurice, London, 30th March 1999",
+      "lead": "Teller does not choose.",
+      "body": "By his own account it began as an irritation. Once he was a successful fashion photographer, model agencies kept calling to offer him girls, until it all got “a bit out of hand”. So he turned it upside down and told them to {{s:teller2008|“send anyone”}}, because he wanted to do something “sort of democratic”. He gave each girl time, between five minutes and half an hour. Similar to a {{s:goldin|blind audition}} in another field: the screen hides the candidate, and Teller takes his own preferences out by seeing everyone who arrives. That removes the first selection, the one that runs on height, the walk and body size.",
+      "part": {
+        "n": "I",
+        "title": "Admittedly,",
+        "line": "Democratic in form."
+      }
+    },
+    {
+      "id": "ib",
+      "scene": "personality",
+      "kicker": "I. Admittedly · B",
+      "photo": "g01",
+      "caption": "29th October 1998",
+      "photo2": "g14",
+      "lead": "Pure personality.",
+      "body": "Normally a model’s clothes are chosen for her. At Teller’s door the models arrive in their own clothes and their own hair, and they are photographed as themselves. In the queue photograph, five people wait in dark coats, jumpers and boots. Nothing is styled and nobody is sold as a look: the picture shows who they are, not a product arranged by other people. Each of them chose that morning how to be seen, and the choice was theirs. {{s:roberts|Roberts}} says fashion is “a maker as well as a marker” of identity, so what they wear marks who they are."
+    },
+    {
+      "id": "ic",
+      "scene": "beauty",
+      "dark": 1,
+      "kicker": "I. Admittedly · C",
+      "photo": "g08",
+      "caption": "Jen Dawson, London, 3rd December 1998",
+      "quote": "door-quote",
+      "lead": "{{s:timeout|Undermining the big norms of beauty.}}",
+      "body": "The setting is a doorway and a pavement in daylight, with {{s:publicdelivery|no set and no retouching}}. Teller asks the models to lean against one side of the door, then lets them do what they want, so {{i:gaze|how each one stands and looks}} stays hers. {{s:mulvey|Mulvey}} says mainstream images make the woman something to be looked at, and glamour is the tool. The doorway offers none of it. That is the strongest evidence for the democratic reading. It describes the frame, not the door."
+    },
+    {
+      "id": "iia",
+      "scene": "door",
+      "dark": 1,
+      "kicker": "II. However · A",
+      "photo": "g05",
+      "caption": "Gemma, London, 29th March 1999",
+      "clip": "tate-power",
+      "lead": "The door is his.",
+      "body": "{{s:mulvey|Mulvey}} describes a split between the active male look and the passive female image. Teller saw it himself: the project was {{v:weird|“a weird idea – girls coming to see me as a man”}}. In this photograph the camera {{i:down|looks down at a model crouching on a step}}, and she looks up. The frame treats everyone alike, but it treats everyone from above.",
+      "part": {
+        "n": "II",
+        "title": "However,",
+        "line": "Unequal in structure."
+      }
+    },
+    {
+      "id": "iib",
+      "scene": "gate",
+      "kicker": "II. However · B",
+      "photo": "g06",
+      "caption": "Gisele, London, 28th September 1998",
+      "lead": "Before they reached the door, they were already performing for the gatekeeper.",
+      "body": "The agencies sent these models, so the first selection had already happened elsewhere. In my experience the standards behind it are still {{v:system-hu|height, thinness}} and what the stylist wants a model to look like. Teller noticed models changing from trainers into high heels round the corner before coming up to his studio ({{s:teller2008|Teller, 2008}}). {{s:holla|Holla}} and {{s:entwistle|Entwistle and Wissinger}} describe the same pressure."
+    },
+    {
+      "id": "iic",
+      "scene": "cost",
+      "dark": 1,
+      "kicker": "II. However · C",
+      "photo": "g11",
+      "facts": [
+        "The models are {{s:publicdelivery|mostly teenage}}.",
+        "The book names them by {{s:skidmore|first name and date only}}.",
+        "Casting visits are normally {{s:hoppe|unpaid}}."
+      ],
+      "lead": "The unequal part is the arrangement around the picture.",
+      "body": "Teller held a possible next step in their careers; they held nothing comparable. None of this requires a judgment of his intentions, which the sources do not show. {{s:mernissi|Mernissi}} describes how an older man’s admiration for very young women is made to look like an aesthetic choice. I found nothing saying these visits were paid differently."
+    },
+    {
+      "id": "view",
+      "scene": "view",
+      "kicker": "My view",
+      "clip": "teller-artbasel",
+      "lead": "I have sat on the other side of this table.",
+      "body": "I have been on the choosing side, and I know that choosing is never neutral. Even when you try to be fair, something decides before you do: a look, a height, a feeling about who fits. People in the industry make you choose, mostly without noticing. That is why Teller’s go-sees interest me. He does not choose. He sees whoever comes, and that is what makes the project democratic.",
+      "photo": "g23",
+      "caption": "Go-Sees, 1998–99"
+    },
+    {
+      "id": "conclusion",
+      "scene": "close",
+      "kicker": "Conclusion",
+      "photo": "g07",
+      "caption": "Jan Dunning, London, 24th September 1998",
+      "lead": "Making a process visible does not make it fair.",
+      "body": "By refusing to choose, Teller suspends the first selection, the one that sorts the female body by height, thinness and walk before anyone speaks. By refusing to glorify, he gives her no fantasy to play: she appears as she is, neither idealised nor disguised. That is what it means to democratise the model: not to equalise the power, but to remove the filter. So *Go-Sees* is neither pure emancipation nor pure exploitation, it democratises the image of the model without democratising the industry around her."
+    }
+  ],
+  "essay": {
+    "sections": [
+      {
+        "id": "intro",
+        "level": 2,
+        "heading": "Introduction",
+        "paras": [
+          "In May 1998, a young model stands at a doorway in West London with her portfolio under her arm. A German man opens his front door, looks at her and takes a picture, he may decide the success of her career.",
+          "For over a year, Juergen Teller did this {{s:skidmore|at least 462 times (Skidmore, 2017)}}, and the pictures were published as the book '*Go-Sees'* (Scalo, 1999). At first the series looks like a small act of fairness in an industry built on selection: he does not pick, he does not style, and he photographs whatever comes. However, the models arrive young and wait at his door, he decides how to shoot and what becomes of the pictures. A photographer who refuses to choose is still the one everyone has to come to see. What does an equal chance mean when only one person controls the door? Is *Go-Sees* a democratisation of the model, or the record of her exploitation by yet another male-gazing photographer? {{v:tate-video|Hear Teller talk about the project.}}",
+          "But before delving deeper into this, let us define some terms. A ‘go-see’ is a casting visit where a model brings her portfolio to a photographer or client, to propose herself for future work. To democratise is to open access equally instead of choosing only those one likes. To exploit is to benefit from {{v:fragile|someone’s vulnerability}} without giving a fair return. Applied to *Go-Sees*, each definition finds support in the series. Equal access: Teller sees every model the agencies send, for the same few minutes and with no stylist. Fair return: the models are young, the book names them by first name only, and as far as I could find nobody was paid. Both tests turn on one fact. A photographer who will see anyone gives every model a chance, and the same openness gives him a large pool of young women who need his attention.",
+          "We are thus faced with a dilemma. If we read *Go-Sees* as a democratic opening in how the image industry represents women, we can explain why Teller photographs any models that come and refuses glamour, but we fail to explain who holds the camera and the power over their careers. If we read it as exploitative, we can explain the imbalance: young models, one man who decides, a career at stake and no pay. But we would fail to explain why the images refuse to flatter the photographer’s fantasy. A man who exploits a young woman’s image has every reason to glamorise it, and Teller strips the glamour away. Each reading explains what the other cannot, and neither can absorb the other’s evidence.",
+          "In this essay, I will argue that *Go-Sees* is democratic in form and unequal in structure. In the first part, we will see how Teller is democratising the model because he does not choose the models, does not impose an identity on them and photographs them in reality. In the second part, we will see how the structure although stays inherently unequal."
+        ],
+        "photo": "g13"
+      },
+      {
+        "id": "ia",
+        "level": 2,
+        "heading": "I. Admittedly, *Go-Sees* democratises the model",
+        "paras": [
+          "The most important evidence to support this claim is that Teller does not choose - and by his own account, this began as an irritation. Once he had become a successful fashion photographer, model agencies kept calling to offer him girls, until it all got “a bit out of hand” ({{s:teller2008|Teller, 2008}}). So he {{v:teller-artbasel|turned it upside down}}: he told the agencies to “send anyone”, as he wanted to do something “sort of democratic” (Teller, 2008). This blind audition shows what democratic selection can look like. Similar to when American orchestras began auditioning musicians behind a screen, women’s chances of advancing improved ({{s:goldin|Goldin & Rouse, 2000}}). The screen takes the judges’ preferences out of the process by hiding the candidate. Teller takes his own preferences out by seeing every candidate who arrives, and he gives each model time in front of the camera, between five minutes and half an hour by his own estimate (Teller, 2008). That removes the first selection, the one that runs on height, the walk and body size ({{s:hoppe|Hoppe, 2022}}): access that does not depend on being liked."
+        ],
+        "photo": "g01"
+      },
+      {
+        "id": "ib",
+        "level": 3,
+        "heading": "",
+        "paras": [
+          "Secondly, he does not impose an identity on them. The course asks how clothing makes an identity visible, and here the models wear their own. Normally a model’s clothes are chosen for her. Figure 2 shows the usual portfolio: bright, posed, magazine-style pages arranged by other people, where her face is sold and her personality stays out of view. At Teller’s door there is no stylist, so the models arrive in plain everyday clothes and their own hair and make-up. Each of them made a choice that morning about how to be read by someone who would decide in minutes. {{s:roberts|Roberts (1993)}} argues that fashion is “a maker as well as a marker” of identity, so dressing is how a model helps to produce who she appears to be. {{s:simmel|Simmel (1957)}} adds a limit: fashion lets us belong and stand out at once, and here individuality is a choice inside a shared code, since many of them wear the same dark, understated clothes. Teller's withdrawal of the stylist therefore returns the authorship of appearance to the model: identity is no longer conferred on her from outside but staged by her within a code she did not write. That transfer is the democratic gesture, and its limit is the same code, since a freedom exercised inside the conventions of the industry she is auditioning for remains a conditional one."
+        ],
+        "photo": "g15"
+      },
+      {
+        "id": "ic",
+        "level": 3,
+        "heading": "",
+        "paras": [
+          "Lastly, he opens up the limits of a model’s personal image by photographing her in reality. The setting is simple: a doorway and a pavement in daylight, with no set and no retouching ({{s:publicdelivery|Public Delivery, 2019}}). Teller asks them to lean against one side of the door, then lets them do whatever they want (Teller, 2008), so each model’s way of standing and looking stays her own. In Figure 1 they look straight into the lens, mostly unsmiling. {{s:mulvey|Mulvey}} argues that mainstream images turn the woman into something to be looked at: she is styled and posed so that looking becomes a pleasure for the viewer, and glamour is the tool that makes it possible. The doorway offers none of that, and what shows instead is the model’s personality. The Time Out critic wrote that Teller’s whole career “has been spent undermining the big norms of beauty and aesthetics” ({{s:timeout|Frankel, 2017}}); and Go-sees is a plain example of that."
+        ],
+        "photo": "g08"
+      },
+      {
+        "id": "iia",
+        "level": 2,
+        "heading": "II. However, the structure stays unequal",
+        "paras": [
+          "",
+          "Firstly, the door is his. Mulvey describes a split between the active male look and the passive female image, and Teller saw it himself. The project was {{v:weird|“a weird idea – girls coming to see me as a man”}} (Public Delivery, 2019), and it made him realise the power he held as a man and as a photographer (Teller, 2008). The pictures show that geometry. In Figure 3 the camera looks down at a model crouching on a step, and she looks up. The frame treats everyone alike, but he also decides which pictures exist in the book. The door is open to everyone, but it opens onto one man in control."
+        ],
+        "photo": "g05"
+      },
+      {
+        "id": "iib",
+        "level": 3,
+        "heading": "",
+        "paras": [
+          "Furthermore, it all started before the door. Teller refuses to choose, but the models who reached him had been sent by agencies (Public Delivery, 2019), so the first selection had already happened elsewhere. In my experience, the standards behind the industry are still {{v:system-hu|height, thinness}} and what the stylist wants a model to look like, and these ideals are so internalised that nobody needs to say them aloud. Personality only matters once the list is down to a few names. {{s:holla|Holla (2018)}} finds that castings are where models are objectified in several ways at once, and {{s:entwistle|Entwistle and Wissinger (2006)}} show how models manage their bodies for work in an insecure freelance market. Teller himself noticed models changing from trainers into high heels round the corner before coming up to his studio (Teller, 2008). Before they reached the door, they were already performing for the gatekeeper."
+        ],
+        "photo": "g06"
+      },
+      {
+        "id": "iic",
+        "level": 3,
+        "heading": "",
+        "paras": [
+          "Finally, by our second definition, someone exploits when they benefit from another’s vulnerability without giving a fair return. The evidence is mixed rather than damning, but several things can be read that way. The models are described as mostly teenage (Public Delivery, 2019). The book names them by first name and date only, so there is no full credit (Skidmore, 2017). Casting visits are normally unpaid (Hoppe, 2022), and I found nothing saying these were different. Teller held a possible next step in their careers, and they held nothing comparable. {{s:mernissi|Mernissi’s (2001)}} “Western harem” describes how an older man’s admiration for very young women is made to look like an aesthetic choice, so that the violence is hard to see. A plain doorway can hide an unequal relationship as well as a glamorous set can."
+        ],
+        "photo": "g11"
+      },
+      {
+        "id": "conclusion",
+        "level": 2,
+        "heading": "Conclusion",
+        "photo": "g14",
+        "paras": [
+          "As a young photographer I'm familiar the other side of this table. When hundreds of cards come in, most are decided in a glance; does the face fit the project, height, thinness and does the team agree etc. Teller moves that moment to a doorway, but he still decides. Mulvey argued that cinema builds a place for the viewer to look from. A casting builds that place too, and whoever sits in it, Teller or me, keeps the power however plain the room looks. Making a process visible does not change who is looking. Fairness would need the person who looks to share the decision, and no doorway gives that away.",
+          ""
+        ]
+      },
+      {
+        "id": "conclusion-end",
+        "level": 3,
+        "heading": "",
+        "photo": "g07",
+        "paras": [
+          "In conclusion, *Go-Sees* answers our opening question in two parts. By refusing to choose, Teller suspends the first selection, the one that sorts the female body by height, thinness and walk before anyone speaks, and by refusing to glorify, he gives her no fantasy to play: she appears as she is, neither idealised nor disguised. In form, then, the series democratises the model. In structure, it does not: Teller still decides and publishes, while the models perform - a photographer who refuses to choose has still set the terms on which everyone is seen. *Go-Sees* is therefore neither pure emancipation nor pure exploitation. It democratises the image of the model without democratising the industry around her, and making that process visible does not inherently make it fair."
+        ]
+      }
+    ],
+    "references": [
+      {
+        "text": "American Suburb X. (2015, December 21). Juergen Teller discussing “Go-Sees” and ping-pong [Excerpt from a Tate interview, 2008].",
+        "url": "https://americansuburbx.com/2015/12/juergen-teller-discussing-go-sees-and-ping-pong.html"
+      },
+      {
+        "text": "Banon, S. (2026). Culture and Identities [Lecture slides]. Institut Français de la Mode."
+      },
+      {
+        "text": "Entwistle, J., & Wissinger, E. (2006). Keeping up appearances: Aesthetic labour and identity in the fashion modelling industries of London and New York. The Sociological Review, 54(4), 774–794.",
+        "url": "https://doi.org/10.1111/j.1467-954X.2006.00671.x"
+      },
+      {
+        "text": "Frankel, E. (2017, November 30). Juergen Teller: Go-Sees, Bubenreuth Kids and a Fairytale About a King. Time Out London.",
+        "url": "https://www.timeout.com/london/art/juergen-teller-go-sees-bubenreuth-kids-and-a-fairytale-about-a-king"
+      },
+      {
+        "text": "Goldin, C., & Rouse, C. (2000). Orchestrating impartiality: The impact of “blind” auditions on female musicians. American Economic Review, 90(4), 715–741."
+      },
+      {
+        "text": "Holla, S. M. (2018). Aesthetic objects on display: The objectification of fashion models as a situated practice. (Confirm journal and pages.)",
+        "url": "https://doi.org/10.1177/1464700117734730"
+      },
+      {
+        "text": "Hoppe, A. D. (2022). The microsociology of aesthetic evaluation: Selecting runway fashion models. Qualitative Sociology, 45(1), 63–87.",
+        "url": "https://doi.org/10.1007/s11133-021-09496-x"
+      },
+      {
+        "text": "Mernissi, F. (2001). Le harem et l’Occident. (Cited via lecture slides; check pp. 205–207.)"
+      },
+      {
+        "text": "Mulvey, L. (1975). Visual pleasure and narrative cinema. Screen, 16(3), 6–18."
+      },
+      {
+        "text": "Public Delivery. (2019, December 5). Juergen Teller’s Go-Sees.",
+        "url": "https://publicdelivery.org/juergen-teller-go-sees/"
+      },
+      {
+        "text": "Roberts, M. L. (1993). Samson and Delilah revisited: The politics of women’s fashion in 1920s France. The American Historical Review, 98(3), 657–684."
+      },
+      {
+        "text": "Simmel, G. (1957). Fashion. American Journal of Sociology, 62(6), 541–558. (Originally published 1904.)"
+      },
+      {
+        "text": "Skidmore, M. (2017, November 24). When Juergen Teller photographed 1990s go-sees. AnOther.",
+        "url": "https://www.anothermag.com/art-photography/10390/when-juergen-teller-photographed-1990s-go-see"
+      },
+      {
+        "text": "Tate. Juergen Teller – Studio Visit | TateShots [Video]. YouTube.",
+        "url": "https://www.youtube.com/watch?v=QY0CCj4ujww"
+      },
+      {
+        "text": "Abbie, B. (n.d.). Faces: Denise Hu, casting director. System Magazine, issue 20.",
+        "url": "https://system-magazine.com/issues/issue-20/faces-denise-hu-casting-director-blake-abbie"
+      },
+      {
+        "text": "Teller, J. (1999). Go-Sees. Scalo."
+      }
+    ],
+    "figures": {
+      "1": "g01",
+      "2": "g15",
+      "3": "g08"
+    }
+  },
+  "sources": {
+    "lead": "Where this comes from.",
+    "body": "Every underlined phrase opens one of these. Photographs: Juergen Teller, Go-Sees (Scalo, 1999), via Public Delivery (2019)."
+  },
+  "layout": {
+    "0:4.1": {
+      "x": -0.04,
+      "y": 16.74
+    },
+    "1:1": {
+      "x": 0.01,
+      "y": 2.84
+    },
+    "3:1.1": {
+      "x": 0,
+      "y": 2.35
+    },
+    "4:3.1": {
+      "x": 0.01,
+      "y": 7.46
+    },
+    "5:5": {
+      "x": -2.96,
+      "y": -8.25
+    },
+    "5:6": {
+      "x": 0,
+      "y": -1.91
+    },
+    "6:3.0": {
+      "x": 0,
+      "y": -1.54
+    },
+    "6:3.1": {
+      "x": 0,
+      "y": -0.88
+    },
+    "8:2": {
+      "x": 0,
+      "y": 3.96
+    },
+    "9:3.2": {
+      "x": -0.02,
+      "y": 6.25
+    }
+  },
+  "bookLayout": {
+    "title": {
+      "blocks": {
+        "R.p": {
+          "x": -0.25,
+          "y": -12.02
+        },
+        "R.h": {
+          "x": -0.1,
+          "y": -1.12
+        }
+      }
+    },
+    "ch0": {
+      "blocks": {
+        "L.tx": {
+          "x": 0.11,
+          "y": 4.3
+        }
+      },
+      "lay": "2"
+    },
+    "ch1": {
+      "lay": "2",
+      "blocks": {
+        "R.tx": {
+          "x": 0,
+          "y": 2.13
+        }
+      }
+    },
+    "ch2": {
+      "blocks": {
+        "L.tx": {
+          "x": 0,
+          "y": 7.52
+        },
+        "R.tq": {
+          "x": -2.15,
+          "y": 6.93,
+          "w": 33.23
+        }
+      }
+    },
+    "ch9": {
+      "blocks": {
+        "R.fig": {
+          "x": 3.09,
+          "y": 4.21
+        }
+      }
+    }
+  }
+}

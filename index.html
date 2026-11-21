@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Everyone at the door</title>
+<link rel="preload" href="fonts/InstrumentSerif-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/InstrumentSerif-400-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Inter-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/DMMono-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="alt.css">
+</head>
+<body>
+<div id="app"></div>
+
+<div id="editbar" class="editbar">
+  <button id="editToggle" type="button">Edit text</button>
+  <button id="cardsBtn" type="button" hidden>Cards</button>
+  <span id="status" class="mono"></span>
+</div>
+
+<div id="seltool" class="seltool" hidden></div>
+<aside id="cardsPanel" class="cardspanel" hidden></aside>
+<div id="contents" class="contents" hidden></div>
+<div id="intro" class="intro" hidden></div>
+
+<script src="alt.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
