@@ -255,6 +255,39 @@
       <aside class="card" id="card" hidden></aside></div>`;
     const bw = $('#bw'), bkx = $('#bkx'), bL = $('#bL'), bR = $('#bR');
     let s = -1, turning = false;
+    /* phones: the spread is laid out at full size and scaled down; press and hold to read it through a lens */
+    const phone = matchMedia('(max-width:700px)').matches;
+    let lens = null, lensStop = () => {};
+    if (phone) {
+      bw.classList.add('ph');
+      const fit = () => { const sc = Math.min(innerWidth * .97 / 1000, (innerHeight - 190) / 667); bw.style.setProperty('--sc', sc); bw.style.setProperty('--scc', Math.min(sc * 1.75, innerWidth * .8 / 500, (innerHeight - 190) / 667)); };
+      fit(); window.addEventListener('resize', fit);
+      lens = document.createElement('div'); lens.className = 'bk-lens'; lens.hidden = true; lens.innerHTML = '<div class="lin"></div>'; bw.appendChild(lens);
+      const ph = document.createElement('div'); ph.className = 'bk-phint mono'; ph.textContent = 'Hold to magnify · swipe up for the next page'; bw.appendChild(ph);
+      const inner = lens.firstChild, R = 100, MAG = 3.2; let on = false, timer = null, sx = 0, sy = 0, ate = false;
+      const upd = (cx, cy) => {
+        const r = bkx.getBoundingClientRect(), sc = r.width / bkx.offsetWidth, px = (cx - r.left) / sc, py = (cy - r.top) / sc, Sl = sc * MAG;
+        const lx = Math.max(R + 6, Math.min(innerWidth - R - 6, cx)), ly = Math.max(R + 70, cy - R - 44);
+        lens.style.left = (lx - R) + 'px'; lens.style.top = (ly - R) + 'px';
+        inner.style.transform = `translate(${R - px * Sl}px,${R - py * Sl}px) scale(${Sl})`;
+      };
+      const begin = (cx, cy) => {
+        if (bkx.classList.contains('closed') || turning) return;
+        inner.innerHTML = ''; const cl = bkx.cloneNode(true);
+        cl.removeAttribute('id'); cl.querySelectorAll('[id]').forEach(e => e.removeAttribute('id'));
+        cl.querySelectorAll('iframe,video,.x-clip').forEach(e => e.remove());
+        cl.querySelectorAll('.pre').forEach(e => e.classList.remove('pre'));
+        cl.className = 'bkx lensclone'; cl.style.cssText = `position:absolute;left:0;top:0;margin:0;transition:none;transform:none;perspective:none;width:${bkx.offsetWidth}px;height:${bkx.offsetHeight}px;pointer-events:none`;
+        inner.appendChild(cl); on = true; ate = true; lens.hidden = false; upd(cx, cy);
+      };
+      const ts = e => { if (e.touches.length !== 1 || e.target.closest('button,a,.xm-bar,.card')) return; sx = e.touches[0].clientX; sy = e.touches[0].clientY; clearTimeout(timer); timer = setTimeout(() => begin(sx, sy), 300); };
+      const tm = e => { const t = e.touches[0]; if (on) { e.preventDefault(); upd(t.clientX, t.clientY); } else if (Math.hypot(t.clientX - sx, t.clientY - sy) > 14) clearTimeout(timer); };
+      const te = () => { clearTimeout(timer); if (on) { on = false; lens.hidden = true; inner.innerHTML = ''; } };
+      const eat = e => { if (ate) { ate = false; e.stopImmediatePropagation(); } };
+      bw.addEventListener('touchstart', ts, { passive: true }); bw.addEventListener('touchmove', tm, { passive: false });
+      bw.addEventListener('touchend', te); bw.addEventListener('touchcancel', te); window.addEventListener('touchend', eat, true);
+      lensStop = () => { window.removeEventListener('touchend', eat, true); window.removeEventListener('resize', fit); };
+    }
     const put = (el, html) => { el.innerHTML = html || ''; el.classList.toggle('empty', !html); };
     const face = (k, html) => `<div class="fc ${k}">${html || ''}</div>`;
     const popIn = () => [bL, bR].forEach(e => { e.classList.remove('pre', 'pop'); void e.offsetWidth; e.classList.add('pop'); });
@@ -327,7 +360,7 @@
     };
     app.addEventListener('click', click);
     go(n0 > 1 ? chIdx[n0 - 1] : 0, true);
-    return { goto: n => { if (!turning) go(chIdx[Math.max(1, n) - 1]); }, destroy() { stop(); G.stopClips(bkx); panel.remove(); mvh.remove(); } };
+    return { goto: n => { if (!turning) go(chIdx[Math.max(1, n) - 1]); }, destroy() { stop(); lensStop(); G.stopClips(bkx); panel.remove(); mvh.remove(); } };
   };
 
   /* =====================================================================

@@ -710,3 +710,17 @@ body.editing .bw .sl [data-bk]:hover{outline:1px dashed var(--rust);outline-offs
 .pg.pn0 .fl.l{left:calc(var(--u) * 6.6)}
 .pg.concl .xm-cta{margin-top:auto;margin-bottom:0}
 .pg.cv .cvi{object-fit:cover}
+
+/* ---------- phones: the Book scaled down, read through a lens ---------- */
+.bw.ph{--bkw:1000px;--bkh:calc(var(--bkw) / 1.5);--sc:.36;--scc:.6}
+.bw.ph .bkx{transform:translate(-50%,-50%) scale(var(--sc)) translateX(calc(var(--bkw) * var(--k)))}
+.bw.ph .bkx.closed{transform:translate(-50%,-50%) scale(var(--scc)) translateX(calc(var(--bkw) * var(--k)))}
+.bw.ph .xm-rail,.bw.ph .bk-hint{display:none}
+.bw.ph .xm-bar{left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom))}
+.bw.ph .xm-line{left:16px;right:16px}
+.bk-phint{position:absolute;left:0;right:0;bottom:calc(76px + env(safe-area-inset-bottom));text-align:center;font-size:10px;color:#9a9a9a;pointer-events:none}
+.bw.shut .bk-phint{opacity:0}
+.bk-lens{position:fixed;z-index:70;width:200px;height:200px;border-radius:50%;overflow:hidden;background:#fff;border:2px solid #151515;box-shadow:0 14px 40px rgba(0,0,0,.35);pointer-events:none}
+.bk-lens[hidden]{display:none}
+.bk-lens .lin{position:absolute;left:0;top:0;transform-origin:0 0;width:1000px;height:667px}
+.bk-lens .bkx{position:absolute !important}

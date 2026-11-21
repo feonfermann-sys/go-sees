@@ -275,7 +275,7 @@
   /* ---------- explore modes: stage (below) or one of the alternatives in alt.js ---------- */
   const phone = matchMedia('(max-width:700px)').matches;
   let xmode = 'book'; try { xmode = localStorage.getItem('gs-explore') || 'book'; } catch (e) {}
-  if (phone) xmode = 'site'; /* phones get the clean scrolling version */
+  if (phone) xmode = 'book';
   if (!['stage', 'rail', 'minimal', 'editorial', 'book', 'mac', 'site'].includes(xmode) || !window.ALT) xmode = 'stage';
   const TR = [['wipe', 'Wipe'], ['fade', 'Fade'], ['push', 'Push'], ['zoom', 'Zoom'], ['iris', 'Iris']], SC = [['step', 'Step'], ['scrub', 'Scrub']];
   const ls = (k, d, ok) => { try { const v = localStorage.getItem(k); return ok.includes(v) ? v : d; } catch (e) { return d; } };
@@ -484,10 +484,19 @@
     const secs = C.essay.sections;
     noScroll(false); window.scrollTo(0, 0);
     const toc = secs.map(s => s.level === 2 ? `<a data-sec="${esc(s.id)}">${esc(strip(s.heading))}</a>` : '').join('') + `<a data-sec="references">References</a>`;
+    const FIGM = C.essay.figures || {}, usedFig = new Set();
+    const inline = t => {
+      if (!phone) return ''; let h = '';
+      const m = /Figures?\s+(\d)/.exec(t);
+      if (m && FIGM[m[1]] && !usedFig.has(m[1])) { usedFig.add(m[1]); const f = FIGM[m[1]]; h += `<figure class="inl"><img src="${src(f)}" alt=""><figcaption class="mono">Figure ${m[1]}${galCap[f] ? ' · ' + esc(galCap[f]) : ''} · Juergen Teller</figcaption></figure>`; }
+      const re = /\{\{v:([^|}]+)\|/g; let q; while ((q = re.exec(t))) { const cd = C.cards[q[1]]; if (cd && cd.kind === 'video') h += `<div class="inl-clip">${clipHTML(q[1])}</div>`; }
+      return h;
+    };
     const art = secs.map((s, i) => {
       const head = s.heading ? `<h2 class="${s.level === 3 ? 'sub' : ''}" data-path="essay.sections.${i}.heading" data-rich="1">${rich(s.heading)}</h2>` : '';
-      const paras = s.paras.map((t, k) => `<p class="${i === 0 && k === 0 ? 'lead2' : ''}" data-path="essay.sections.${i}.paras.${k}" data-rich="1">${rich(t)}</p>`).join('');
-      return `<section id="sec-${esc(s.id)}" data-photo="${esc(s.photo || '')}">${head}${paras}</section>`;
+      const paras = s.paras.map((t, k) => `<p class="${i === 0 && k === 0 ? 'lead2' : ''}" data-path="essay.sections.${i}.paras.${k}" data-rich="1">${rich(t)}</p>${inline(t)}`).join('');
+      const pic = phone && s.photo ? `<figure class="inl"><img src="${src(s.photo)}" alt=""><figcaption class="mono">${esc(galCap[s.photo] || '')}${galCap[s.photo] ? ' · ' : ''}Juergen Teller</figcaption></figure>` : '';
+      return `<section id="sec-${esc(s.id)}" data-photo="${esc(s.photo || '')}">${head}${pic}${paras}</section>`;
     }).join('');
     const refs = `<section id="sec-references"><h2>References</h2>${C.essay.references.map((r, k) => `<p style="font-size:14px;line-height:1.55;margin:0 0 12px"><span data-path="essay.references.${k}.text">${esc(r.text)}</span>${r.url ? ` <a class="mono" style="color:var(--rust);text-decoration:none;font-size:10px" href="${esc(r.url)}" target="_blank" rel="noopener">open</a>` : ''}</p>`).join('')}<p class="disc" data-path="site.disclosure">${esc((C.site || {}).disclosure || '')}</p></section>`;
     const FIGP = Object.values(C.essay.figures || {}); const figs = [...new Set([...secs.map(s => s.photo), ...FIGP].filter(Boolean))].map(f => `<img data-f="${f}" src="${src(f)}" alt="">`).join('');
@@ -495,7 +504,7 @@
       <article class="col"><div class="mono">Full essay</div><h1 data-path="site.title">${esc(C.site.title)}</h1>${art}${refs}</article>
       <aside class="sidecol"><div class="sfig" id="sfig">${figs}</div><div class="mono sfigcap" id="sfigcap"></div><div class="side" id="side"><div class="hint mono">Click an underlined phrase to open the interview, quote or source.</div></div></aside></div>
       <div class="progtext mono" id="progtext"></div><aside class="card" id="card" hidden></aside>`;
-    mounted = 'essay'; scenes = [];
+    mounted = 'essay'; scenes = []; if (phone) startClips($('.col'));
     document.body.classList.remove('ondark'); document.body.classList.add('inessay');
     essayScroll();
     if (anchor) { const t = $('#sec-' + anchor); if (t) t.scrollIntoView(); }

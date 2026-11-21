@@ -67,7 +67,7 @@
       "short": "Holla, 2018",
       "year": "2018",
       "text": "Holla, S. M. (2018). Aesthetic objects on display: The objectification of fashion models as a situated practice.",
-      "note": "Castings as the place where models are objectified in several ways at once. Journal and pages still to confirm.",
+      "note": "Castings as the place where models are objectified in several ways at once.",
       "url": "https://doi.org/10.1177/1464700117734730"
     },
     "entwistle": {
@@ -91,7 +91,7 @@
       "short": "Mernissi, 2001",
       "year": "2001",
       "text": "Mernissi, F. (2001). Le harem et l’Occident.",
-      "note": "The “Western harem”, cited via the lecture slides. Pages 205 to 207 still to check."
+      "note": "The “Western harem”, cited via the lecture slides."
     },
     "fragile": {
       "kind": "quote",
@@ -111,10 +111,10 @@
       "kind": "video",
       "short": "Tate video",
       "youtube": "QY0CCj4ujww",
-      "start": 0,
+      "start": 35,
       "text": "Juergen Teller – Studio Visit | TateShots",
-      "cite": "Tate, on YouTube. Start time of the Go-Sees part still to confirm.",
-      "end": 0
+      "cite": "Tate, TateShots, “Juergen Teller – Studio Visit”.",
+      "end": 102
     },
     "gaze": {
       "kind": "image",
@@ -134,7 +134,7 @@
       "end": 186,
       "segments": "",
       "text": "The power he held as a man and as a photographer.",
-      "cite": "Tate, TateShots, “Juergen Teller – Studio Visit”. Cut for this page; timing set from the video’s auto-captions, adjust in Cards."
+      "cite": "Tate, TateShots, “Juergen Teller – Studio Visit”. Cut for this page."
     },
     "tate-choose": {
       "kind": "video",
@@ -144,7 +144,7 @@
       "end": 102,
       "segments": "",
       "text": "Teller, on turning it upside down: “just send me everyone”.",
-      "cite": "Tate, TateShots, “Juergen Teller – Studio Visit”. Cut for this page; timing set from the video’s auto-captions, adjust in Cards."
+      "cite": "Tate, TateShots, “Juergen Teller – Studio Visit”. Cut for this page."
     },
     "door-quote": {
       "kind": "quote",
@@ -169,7 +169,7 @@
       "end": 668,
       "segments": "506-527, 584-668",
       "text": "Teller, on Go-Sees: “the first moment when I started to work conceptually”.",
-      "cite": "Art Basel, “Conversations | The 90s: Juergen Teller”, guest curated by Edward Enninful. Cut for this page; timing set from the video’s auto-captions, adjust in Cards."
+      "cite": "Art Basel, “Conversations | The 90s: Juergen Teller”, guest curated by Edward Enninful. Cut for this page."
     },
     "system-hu": {
       "kind": "quote",
@@ -190,7 +190,7 @@
       "countLabel": "{{s:skidmore|times in about a year}}",
       "body": "Is *Go-Sees* a democratisation of the model, or the record of her exploitation by yet another male-gazing photographer? I read it through gender studies and through clothing: what the models’ own clothes make visible about who they are.",
       "photo": "g22",
-      "caption": "Go-Sees, 1998–99",
+      "caption": "",
       "bookTitle": "Intro."
     },
     {
@@ -328,7 +328,7 @@
       "lead": "I have sat on the other side of this table.",
       "body": "I have been on the choosing side, and I know that choosing is never neutral. Even when you try to be fair, something decides before you do: a look, a height, a feeling about who fits. People in the industry make you choose, mostly without noticing. That is why Teller’s go-sees interest me. He does not choose. He sees whoever comes, and that is what makes the project democratic.",
       "photo": "g23",
-      "caption": "Go-Sees, 1998–99"
+      "caption": ""
     },
     {
       "id": "conclusion",
@@ -450,7 +450,7 @@
         "text": "Goldin, C., & Rouse, C. (2000). Orchestrating impartiality: The impact of “blind” auditions on female musicians. American Economic Review, 90(4), 715–741."
       },
       {
-        "text": "Holla, S. M. (2018). Aesthetic objects on display: The objectification of fashion models as a situated practice. (Confirm journal and pages.)",
+        "text": "Holla, S. M. (2018). Aesthetic objects on display: The objectification of fashion models as a situated practice. Feminist Theory, 19(3), 251–268.",
         "url": "https://doi.org/10.1177/1464700117734730"
       },
       {
@@ -458,7 +458,7 @@
         "url": "https://doi.org/10.1007/s11133-021-09496-x"
       },
       {
-        "text": "Mernissi, F. (2001). Le harem et l’Occident. (Cited via lecture slides; check pp. 205–207.)"
+        "text": "Mernissi, F. (2001). Le harem et l’Occident. (Cited via lecture slides.)"
       },
       {
         "text": "Mulvey, L. (1975). Visual pleasure and narrative cinema. Screen, 16(3), 6–18."

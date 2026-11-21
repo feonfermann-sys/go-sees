@@ -490,3 +490,14 @@ body.static .editbar,body.static #editToggle{display:none !important}
 
 .disc{margin:34px 0 0;font:400 9px/1.5 var(--monof);letter-spacing:.04em;color:#a2a2a0;max-width:46em}
 .col p.disc,#sec-references p.disc,.xs-refs + p.disc,.rf p.disc{font:400 9.5px/1.55 var(--monof) !important;letter-spacing:.03em !important;color:#a6a6a4 !important;margin:30px 0 0 !important;max-width:42em}
+
+/* ---------- phones: the essay reads like an article ---------- */
+@media (max-width:700px){
+  .sidecol{display:none !important}
+  .col{padding-bottom:60px}
+  .inl{margin:22px 0}
+  .inl img{display:block;width:100%;height:auto}
+  .inl figcaption{margin-top:8px;font-size:9.5px;line-height:1.5;color:#8a8a8a;letter-spacing:.06em;text-transform:uppercase}
+  .inl-clip{margin:22px 0}
+  .top .brand,.top .logo{font-size:12px}
+}
