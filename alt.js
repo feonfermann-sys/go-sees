@@ -36,7 +36,7 @@
           h += `<div class="x-two">${col(p.leftLead, p.leftItems, p.leftGoto, 'left')}${col(p.rightLead, p.rightItems, p.rightGoto, 'right')}</div>`;
         }
         if (p.facts) h += `<ol class="x-facts">${p.facts.map((t, k) => `<li><i>0${k + 1}</i><span data-path="book.${i}.facts.${k}" data-rich="1">${rich(t)}</span></li>`).join('')}</ol>`;
-        if (p.id === 'hero') h += `<div class="x-count"><b data-countx="${p.count}">${p.count}</b><span>${rich(p.countLabel || '')}</span></div>`;
+        if (p.id === 'hero') h += `<div class="x-count"><b data-countx="${p.count}">0</b><span>${rich(p.countLabel || '')}</span></div>`;
         const q = p.id !== 'dilemma' && p.quote && C.cards[p.quote]; if (q) h += `<blockquote class="x-bq">${esc(q.text)}<cite>${esc(q.cite || '')}</cite></blockquote>`;
         if (p.body) h += `<p class="x-body" data-path="book.${i}.body" data-rich="1">${rich(p.body)}</p>`;
         if (p.clip && C.cards[p.clip] && !(o && o.noClip)) h += `<div class="x-clip">${G.clipHTML(p.clip)}</div>`;
@@ -50,10 +50,8 @@
         return out;
       },
       countUp(root) {
-        const still = root && root.classList && root.classList.contains('bkx'); /* in the Book the number stays put, so a page turn never shows 0 */
         $$('[data-countx]', root).forEach(el => {
           const to = Number(el.dataset.countx) || 0, t0 = performance.now(); clearInterval(el.__iv);
-          if (still) { el.textContent = to; return; } el.textContent = 0;
           el.__iv = setInterval(() => { const k = Math.min(1, (performance.now() - t0) / 1600); el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))); if (k >= 1) clearInterval(el.__iv); }, 32);
         });
       }
@@ -328,6 +326,7 @@
       bL.classList.remove('pop'); bR.classList.remove('pop'); (fwd ? bR : bL).classList.add('pre');
       if (fwd) { put(bR, np.R); leaf.innerHTML = face('f', op.R) + face('b', np.L); leaf.style.transform = 'rotateY(0deg)'; }
       else { put(bL, np.L); leaf.innerHTML = face('f', np.R) + face('b', op.L); leaf.style.transform = 'rotateY(-180deg)'; }
+      $$('.fc.f [data-countx]', leaf).forEach(e => { e.textContent = e.dataset.countx; }); /* the page that is leaving keeps its full number */
       bkx.appendChild(leaf); bkx.classList.toggle('closed', to === 0); void leaf.offsetWidth;
       leaf.style.transition = `transform ${dur}ms cubic-bezier(.55,.05,.25,1)`; leaf.classList.add('turning'); leaf.style.setProperty('--d', dur + 'ms');
       leaf.style.transform = fwd ? 'rotateY(-180deg)' : 'rotateY(0deg)';
