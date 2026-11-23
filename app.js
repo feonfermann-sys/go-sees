@@ -12,10 +12,10 @@
   try { const r = await fetch('/api/content'); if (!r.ok) throw new Error('no api'); C = await r.json(); }
   catch (e) {
     /* published copy: no server, so read the saved text and switch editing off */
-    try { C = await (await fetch('content.json?v=202611232230')).json(); document.body.classList.add('static'); }
+    try { C = await (await fetch('content.json?v=202611232300')).json(); document.body.classList.add('static'); }
     catch (e2) { app.innerHTML = '<p style="padding:90px 40px">Could not load content.json. Start the server with <code>node server.js</code>.</p>'; return; }
   }
-  try { GAL = await (await fetch('img/go.json?v=202611232230')).json(); } catch (e) { GAL = []; }
+  try { GAL = await (await fetch('img/go.json?v=202611232300')).json(); } catch (e) { GAL = []; }
   const galCap = {}; GAL.forEach(g => { galCap[g.file.replace('.jpg', '')] = g.caption; });
 
   // fonts first, so nothing swaps after the first paint
@@ -274,8 +274,7 @@
 
   /* ---------- explore modes: stage (below) or one of the alternatives in alt.js ---------- */
   const phone = matchMedia('(max-width:700px)').matches;
-  let xmode = 'book'; try { xmode = localStorage.getItem('gs-explore') || 'book'; } catch (e) {}
-  if (phone) xmode = 'book';
+  let xmode = 'book'; /* the Book is the only explore view */
   if (!['stage', 'rail', 'minimal', 'editorial', 'book', 'mac', 'site'].includes(xmode) || !window.ALT) xmode = 'stage';
   const TR = [['wipe', 'Wipe'], ['fade', 'Fade'], ['push', 'Push'], ['zoom', 'Zoom'], ['iris', 'Iris']], SC = [['step', 'Step'], ['scrub', 'Scrub']];
   const ls = (k, d, ok) => { try { const v = localStorage.getItem(k); return ok.includes(v) ? v : d; } catch (e) { return d; } };
@@ -288,7 +287,7 @@
   function xswitch() {
     xtrans();
     let el = $('#xsw'); if (!el) { el = document.createElement('div'); el.id = 'xsw'; el.className = 'xsw mono'; document.body.appendChild(el); }
-    el.hidden = current.view !== 'story';
+    el.hidden = true; el.innerHTML = ''; return;
     el.innerHTML = `<span>Explore</span>` + (window.ALT ? window.ALT.modes : [['stage', 'Stage']]).map(([k, l]) => `<button type="button" data-xmode="${k}" class="${xmode === k ? 'on' : ''}">${l}</button>`).join('');
   }
   const GS = { get C() { return C; }, get GAL() { return GAL; }, esc, strip, rich, src, galCap, clipHTML, startClips, stopClips, topbar, go, setEditable, isEditing: () => editing, openCard, queueSave: () => queueSave(),
