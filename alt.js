@@ -36,7 +36,7 @@
           h += `<div class="x-two">${col(p.leftLead, p.leftItems, p.leftGoto, 'left')}${col(p.rightLead, p.rightItems, p.rightGoto, 'right')}</div>`;
         }
         if (p.facts) h += `<ol class="x-facts">${p.facts.map((t, k) => `<li><i>0${k + 1}</i><span data-path="book.${i}.facts.${k}" data-rich="1">${rich(t)}</span></li>`).join('')}</ol>`;
-        if (p.id === 'hero') h += `<div class="x-count"><b data-countx="${p.count}">0</b><span>${rich(p.countLabel || '')}</span></div>`;
+        if (p.id === 'hero' && !(o && o.noCount)) h += `<div class="x-count"><b data-countx="${p.count}">0</b><span>${rich(p.countLabel || '')}</span></div>`;
         const q = p.id !== 'dilemma' && p.quote && C.cards[p.quote]; if (q) h += `<blockquote class="x-bq">${esc(q.text)}<cite>${esc(q.cite || '')}</cite></blockquote>`;
         if (p.body) h += `<p class="x-body" data-path="book.${i}.body" data-rich="1">${rich(p.body)}</p>`;
         if (p.clip && C.cards[p.clip] && !(o && o.noClip)) h += `<div class="x-clip">${G.clipHTML(p.clip)}</div>`;
@@ -188,6 +188,8 @@
     const blk = (k, side, key) => { const b = (((C.bookLayout[k] || {}).blocks) || {})[side + '.' + key]; return b ? ` style="translate:calc(var(--u) * ${b.x || 0}) calc(var(--v) * ${b.y || 0});${b.w ? `width:calc(var(--u) * ${b.w});` : ''}"` : ''; };
     const fl = (s, side) => `<div class="fl ${side}">${pad(Math.max(0, (s - 1) * 2 + (side === 'r' ? 1 : 0)))}</div>`;
     const bleed = (f, side) => `<div class="pg ph"><img src="${src(f)}" alt=""><div class="cp mono ${side}">${esc(cap(f))}</div></div>`;
+    /* the intro: the number sits on the photograph, in white */
+    const bleedC = (i, f, side) => { const h = bleed(f, side); if (i !== 0) return h; const p = C.book[0]; return h.replace(/<\/div>$/, `<div class="x-count oph"><b data-countx="${p.count}">0</b><span>${G.rich(p.countLabel || '')}</span></div></div>`); };
     const half = (f, side) => `<div class="pg hf ${side}" style="background-image:url(${src(f)})"><div class="cp mono r">${side === 'r' ? esc(cap(f)) : ''}</div></div>`;
     const text = (i, s, side) => {
       const p = K.P(i), h = K.head(i, 'h2', 'bk-h'), b = key => blk(LK(i), side, key), fin = i === N - 1;
@@ -195,7 +197,7 @@
       const cn = '';
       const cta = fin ? `<a class="xm-cta" href="#/essay">Read the full essay →</a>` : '';
       const clip = p.clip && C.cards[p.clip] ? `<div class="cl" data-bk="clip"${b('clip')}>${G.clipHTML(p.clip)}</div>` : '';
-      return `<div class="pg tx ch${i}${fin ? ' concl' : ''}${clip ? ' hasclip' : ''}"><div class="bcol"><div class="k mono" data-bk="k"${b('k')}>${esc(p.bookKicker || p.kicker)}</div>${p.lead ? `<div class="hh" data-bk="hh"${b('hh')}>${h.title}</div>` : ''}<div class="tx x-scroll" data-bk="tx"${b('tx')}>${h.lede}${K.extras(i, { noClip: 1 })}</div>${cn}${clip}${cta}</div>${fl(s, side)}</div>`;
+      return `<div class="pg tx ch${i}${fin ? ' concl' : ''}${clip ? ' hasclip' : ''}"><div class="bcol"><div class="k mono" data-bk="k"${b('k')}>${esc(p.bookKicker || p.kicker)}</div>${p.lead ? `<div class="hh" data-bk="hh"${b('hh')}>${h.title}</div>` : ''}<div class="tx x-scroll" data-bk="tx"${b('tx')}>${h.lede}${K.extras(i, { noClip: 1, noCount: i === 0 })}</div>${cn}${clip}${cta}</div>${fl(s, side)}</div>`;
     };
     const SECOND = { 7: 'g19' };
     const fig2 = (i, side) => SECOND[i] ? `<figure class="f2" data-bk="fig2"${blk(LK(i), side, 'fig2')}><img src="${src(SECOND[i])}" alt=""><figcaption class="mono">${esc(cap(SECOND[i]))}</figcaption></figure>` : '';
@@ -224,7 +226,7 @@
     const dBody = (s, side) => `<div class="pg q ch1 dr"><div class="drw"><figure data-bk="fig"${blk(LK(1), side, 'fig')}><img src="${src(K.photo(1))}" alt=""><figcaption>${esc(galCap[K.photo(1)] || K.cap(1))}</figcaption></figure><p class="x-body" data-bk="tx"${blk(LK(1), side, 'tx')} data-path="book.1.body" data-rich="1">${G.rich(K.P(1).body)}</p></div>${fl(s, side)}</div>`;
     const tText = (s, side) => { const p = K.P(2), b = k => blk(LK(2), side, k); return `<div class="pg tx q ch2 tq"><div class="bcol"><div class="k" data-bk="k"${b('k')}>${esc(p.kicker)}</div><div class="hh" data-bk="hh"${b('hh')}><h2 class="bk-h" data-path="book.2.lead">${esc(p.lead)}</h2></div><div class="tx" data-bk="tx"${b('tx')}>${K.extras(2, { noClip: 1 })}</div></div>${fl(s, side)}</div>`; };
     /* definitions: just the title and the two definitions, low on the left page */
-    const dLeft = (s, side) => { const p = K.P(1), b = k => blk(LK(1), side, k); return `<div class="pg dl q"><div class="k" data-bk="k"${b('k')}>${esc(p.kicker)}</div><div class="dls" data-bk="dd"${b('dd')}>${p.defs.map((d, k) => `<div><h3 data-path="book.1.defs.${k}.w">${esc(d.w)}</h3><p data-path="book.1.defs.${k}.t" data-rich="1">${G.rich(d.t)}</p></div>`).join('')}</div>${fl(s, side)}</div>`; };
+    const dLeft = (s, side) => { const p = K.P(1), b = k => blk(LK(1), side, k); return `<div class="pg dl fn q"><div class="k" data-bk="k"${b('k')}>${esc(p.kicker)}</div><p class="fi" data-bk="di"${b('di')} data-path="book.1.defsIntro">${esc(p.defsIntro || '')}</p><div class="fns" data-bk="dd"${b('dd')}>${p.defs.map((d, k) => `<p><i>${k + 1}</i><b>${esc(d.w.replace(/\?$/, ''))}</b> <span data-path="book.1.defs.${k}.t" data-rich="1">${G.rich(d.t)}</span></p>`).join('')}</div>${fl(s, side)}</div>`; };
     /* the dilemma: one photograph across both pages, the question set on it */
     const tHalf = (s, side) => { const p = K.P(2), f = 'g03', b = k => blk(LK(2), side, k); return `<div class="pg hf ${side} tq2" style="background-image:url(${src(f)})"><div class="tqt ${side}" data-bk="tq"${b('tq')}${side === 'l' ? ' aria-hidden="true"' : ''}><div class="k"${side === 'r' ? ' data-path="book.2.kicker"' : ''}>${esc(p.kicker)}</div><p class="lg"${side === 'r' ? ' data-path="book.2.long" data-rich="1"' : ''}>${G.rich(p.long || '')}</p></div>${side === 'l' ? `<div class="cp mono l">${esc(cap(f))}</div>` : ''}</div>`; };
     function pagesOf(s) {
@@ -241,8 +243,8 @@
       if (false) return x.i === 1 ? { L: qOffset(1, s, 'l'), R: qText(1, s, 'r') } : { L: qTitle(2, s, 'l'), R: qBoth(2, s, 'r') };
       const f = K.photo(x.i), lay = (C.bookLayout[LK(x.i)] || {}).lay || x.lay;
       if (lay === '4') return { L: offset(x.i, s, 'l'), R: text(x.i, s, 'r') };
-      if (lay === '1') return { L: text(x.i, s, 'l'), R: bleed(f, 'r') };
-      if (lay === '2') return { L: bleed(f, 'l'), R: text(x.i, s, 'r') };
+      if (lay === '1') return { L: text(x.i, s, 'l'), R: bleedC(x.i, f, 'r') };
+      if (lay === '2') return { L: bleedC(x.i, f, 'l'), R: text(x.i, s, 'r') };
       return { L: text(x.i, s, 'l'), R: offset(x.i, s, 'r') };
     }
 

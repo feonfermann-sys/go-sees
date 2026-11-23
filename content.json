@@ -212,7 +212,7 @@
       "body": "Both words have been used to describe *Go-Sees*, and each can be defended with evidence. The question is which of them holds.",
       "photo": "g09",
       "quote": "fragile",
-      "defsIntro": "",
+      "defsIntro": "Two words need defining before the argument begins: democratise¹ and exploit².",
       "defsOutro": ""
     },
     {
@@ -555,13 +555,7 @@
       }
     },
     "ch0": {
-      "blocks": {
-        "L.tx": {
-          "x": 0.11,
-          "y": 4.3
-        }
-      },
-      "lay": "2"
+      "lay": "1"
     },
     "ch1": {
       "lay": "2",
