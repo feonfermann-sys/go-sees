@@ -749,3 +749,6 @@ body.editing .bw .sl [data-bk]:hover{outline:1px dashed var(--rust);outline-offs
 .bk-end .be-btns{gap:22px}
 .bk-end .be-go{padding:0 0 4px;border-radius:0;background:none;color:var(--ink);font:500 clamp(20px,2.4vw,28px)/1.1 var(--display);letter-spacing:-.03em;border-bottom:1px solid var(--ink)}
 .bk-end [data-be]{font:400 11px var(--monof);letter-spacing:.14em;text-transform:uppercase;color:#9a9a9a}
+
+/* the AI line on the bibliography page: tiny */
+.pg.rf .bcol>p.disc{font-size:max(6px,calc(var(--u) * .52)) !important;line-height:1.5 !important;letter-spacing:.02em !important}
