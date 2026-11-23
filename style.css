@@ -501,3 +501,10 @@ body.static .editbar,body.static #editToggle{display:none !important}
   .inl-clip{margin:22px 0}
   .top .brand,.top .logo{font-size:12px}
 }
+
+/* ---------- Explore / Full essay switch: bottom right, always ---------- */
+.top .switch{position:fixed;right:24px;bottom:calc(22px + env(safe-area-inset-bottom));z-index:60;box-shadow:0 6px 22px rgba(0,0,0,.14)}
+.top .contents-btn{grid-column:3}
+body.inessay .top{background:none;backdrop-filter:none;border-bottom:0}
+body.inessay .top::before{content:"";position:absolute;inset:0;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:-1;pointer-events:none}
+@media (max-width:700px){.top .switch{right:12px;bottom:calc(16px + env(safe-area-inset-bottom))}}
