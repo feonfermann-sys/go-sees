@@ -732,3 +732,14 @@ body.editing .bw .sl [data-bk]:hover{outline:1px dashed var(--rust);outline-offs
 /* ---------- page turner: bottom left ---------- */
 .bw .xm-bar,.bw.ph .xm-bar{left:24px;right:auto;transform:none;bottom:calc(22px + env(safe-area-inset-bottom))}
 @media (max-width:700px){.bw .xm-bar,.bw.ph .xm-bar{left:12px;bottom:calc(16px + env(safe-area-inset-bottom))}}
+
+/* ---------- end of the book: a quiet question instead of a cut ---------- */
+.bk-end{position:fixed;inset:0;z-index:80;display:grid;place-items:center;background:rgba(255,255,255,.95);opacity:0;transition:opacity .6s ease;text-align:center;padding:24px}
+.bk-end[hidden]{display:none}
+.bk-end.on{opacity:1}
+.bk-end .be-k{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#8a8a8a}
+.bk-end h2{margin:14px 0 30px;font:600 clamp(30px,4.6vw,56px)/1 var(--display);letter-spacing:-.045em;color:var(--ink)}
+.bk-end .be-btns{display:flex;flex-direction:column;align-items:center;gap:14px}
+.bk-end .be-go{display:inline-block;padding:14px 28px;border-radius:26px;background:var(--rust);color:#fff;text-decoration:none;font:500 14px var(--sans);letter-spacing:.01em}
+.bk-end [data-be]{font:400 11px var(--monof);letter-spacing:.14em;text-transform:uppercase;color:#7a7a7a;padding:6px 10px}
+.bk-end [data-be]:hover{color:var(--ink)}

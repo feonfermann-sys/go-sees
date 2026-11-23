@@ -332,7 +332,15 @@
       leaf.style.transform = fwd ? 'rotateY(-180deg)' : 'rotateY(0deg)';
       setTimeout(() => { put(bL, np.L); put(bR, np.R); leaf.remove(); turning = false; s = to; finish(); }, dur + 40);
     }
-    const step = d => { if (turning) return; if (s + d > last) { G.go('#/essay'); return; } go(s + d); };
+    /* the end of the book: instead of cutting to the essay, fade in a quiet question */
+    const endEl = document.createElement('div'); endEl.className = 'bk-end'; endEl.hidden = true;
+    endEl.innerHTML = `<div class="be-in"><div class="mono be-k">End of the book</div><h2>Keep reading?</h2><div class="be-btns"><a class="be-go" href="#/essay">Read the full essay →</a><button type="button" data-be="back">Back to the book</button><button type="button" data-be="again">Start again</button></div></div>`;
+    bw.appendChild(endEl);
+    let endOpen = false;
+    const showEnd = () => { endOpen = true; endEl.hidden = false; void endEl.offsetWidth; endEl.classList.add('on'); };
+    const hideEnd = () => { endOpen = false; endEl.classList.remove('on'); setTimeout(() => { if (!endOpen) endEl.hidden = true; }, 600); };
+    endEl.addEventListener('click', e => { const b = e.target.closest('[data-be]'); if (b) { hideEnd(); if (b.dataset.be === 'again') go(1); return; } if (e.target === endEl) hideEnd(); });
+    const step = d => { if (turning) return; if (endOpen) { if (d < 0) hideEnd(); return; } if (s + d > last) { showEnd(); return; } go(s + d); };
     const stop = stepper(G, step);
 
     /* edit the layout of a page: choose a layout, drag blocks, drag their width. Everything saves by itself. */
@@ -377,7 +385,7 @@
     };
     app.addEventListener('click', click);
     go(n0 > 1 ? chIdx[n0 - 1] : 0, true);
-    return { goto: n => { if (!turning) go(chIdx[Math.max(1, n) - 1]); }, destroy() { stop(); lensStop(); G.stopClips(bkx); panel.remove(); mvh.remove(); } };
+    return { goto: n => { if (!turning) go(chIdx[Math.max(1, n) - 1]); }, destroy() { stop(); lensStop(); G.stopClips(bkx); panel.remove(); mvh.remove(); endEl.remove(); } };
   };
 
   /* =====================================================================
