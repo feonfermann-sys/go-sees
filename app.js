@@ -12,10 +12,10 @@
   try { const r = await fetch('/api/content'); if (!r.ok) throw new Error('no api'); C = await r.json(); }
   catch (e) {
     /* published copy: no server, so read the saved text and switch editing off */
-    try { C = await (await fetch('content.json?v=202611240200')).json(); document.body.classList.add('static'); }
+    try { C = await (await fetch('content.json?v=202611240300')).json(); document.body.classList.add('static'); }
     catch (e2) { app.innerHTML = '<p style="padding:90px 40px">Could not load content.json. Start the server with <code>node server.js</code>.</p>'; return; }
   }
-  try { GAL = await (await fetch('img/go.json?v=202611240200')).json(); } catch (e) { GAL = []; }
+  try { GAL = await (await fetch('img/go.json?v=202611240300')).json(); } catch (e) { GAL = []; }
   const galCap = {}; GAL.forEach(g => { galCap[g.file.replace('.jpg', '')] = g.caption; });
 
   // fonts first, so nothing swaps after the first paint
@@ -144,7 +144,7 @@
   /* ---------- opening wall of photographs ---------- */
   async function playIntro() {
     const el = $('#intro');
-    const pool = (GAL.length ? GAL.map(g => 'img/go/' + g.file) : ['f1', 'f2', 'f3', 'f4'].map(f => `img/${f}.jpg`));
+    const pool = (GAL.length ? GAL.filter(g => g.file !== 'g16.jpg').map(g => 'img/go/' + g.file) : ['f1', 'f2', 'f3', 'f4'].map(f => `img/${f}.jpg`));
     await Promise.all(pool.map(u => new Promise(res => { const im = new Image(); im.onload = im.onerror = res; im.src = u; })));
     const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
     const cols = 6, rows = 3, total = cols * rows; let order = shuffle(pool);
@@ -228,7 +228,7 @@
         return `<section class="scene door dk" data-dark="1"><div class="dph" id="phframe"><img src="${src(p.photo)}" alt=""><figcaption class="anno"></figcaption></div>${capEl(i)}${kick(i, 'left:47vw;')}
           <div class="dt">${T(i, 'lead', 'lead xl', 0.02, 0.12)}<div class="dclip rv" ${ab(0.12, 0.28)}>${clipHTML(p.clip)}</div>${T(i, 'body', 'bodytext', 0.26, 0.42, 'p')}</div></section>`;
       case 'gate': {
-        const pool = (GAL.length ? GAL.map(g => g.file.replace('.jpg', '')) : ['f1', 'f2', 'f3', 'f4']).filter(f => f !== 'g06'), order = pool.map((f, k) => pool[(k * 7) % pool.length]);
+        const pool = (GAL.length ? GAL.map(g => g.file.replace('.jpg', '')) : ['f1', 'f2', 'f3', 'f4']).filter(f => f !== 'g06' && f !== 'g16'), order = pool.map((f, k) => pool[(k * 7) % pool.length]);
         const strip = [...new Set(order)].map(f => `<img src="${src(f)}" alt="">`).join('');
         return `<section class="scene gate"><div class="gs"><div class="gstrip">${strip}${strip}</div></div>${kick(i, 'color:#fff;')}
           <div class="gl">${T(i, 'lead', 'lead', 0.02, 0.14)}</div><div class="gb">${T(i, 'body', 'bodytext', 0.16, 0.34, 'p')}</div></section>`; }
@@ -237,7 +237,7 @@
           <ul class="cf">${p.facts.map((t, k) => `<li class="rv" ${ab(0.05 + k * 0.13, 0.17 + k * 0.13)}><span class="n">0${k + 1}</span><b style="font-weight:500" ${dp(`book.${i}.facts.${k}`, 1)}>${rich(t)}</b></li>`).join('')}</ul>
           <div class="cr">${T(i, 'lead', 'lead', 0.5, 0.62)}${T(i, 'body', 'bodytext', 0.58, 0.74, 'p')}</div></section>`;
       case 'view': {
-        const pool = GAL.length ? GAL : [{ file: 'g01.jpg', caption: '' }];
+        const pool = GAL.length ? GAL.filter(g => g.file !== 'g16.jpg') : [{ file: 'g01.jpg', caption: '' }];
         const keep = new Set([3, 9, 16]); let t = '';
         pool.slice(0, 20).forEach((g, k) => { t += `<div class="vt${keep.has(k) ? ' keep' : ''}" data-cap="${esc(g.caption)}" style="background-image:url(img/go/${g.file})"></div>`; });
         return `<section class="scene view">${kick(i)}<div class="vg">${t}</div><div class="vcap mono" id="vcap">Hover a card.</div>
@@ -251,7 +251,7 @@
   }
 
   function genHTML(i) {
-    const p = C.book[i], pool = GAL.length ? GAL : [{ file: 'g01.jpg', caption: '' }], g = k => pool[(i * 3 + k * 5 + 1) % pool.length];
+    const p = C.book[i], pool = GAL.length ? GAL : [{ file: 'g01.jpg', caption: '' }], g = k => { let n = (i * 3 + k * 5 + 1) % pool.length; if (pool[n].file === 'g16.jpg') n = (n + 1) % pool.length; return pool[n]; };
     const lead = p.lead ? `<h2 class="glead rv" ${ab(0.02, 0.12)} ${dp(`book.${i}.lead`, 1)}>${rich(p.lead)}</h2>` : `<h2 class="glead rv" ${ab(0.02, 0.12)}>${esc(p.kicker)}</h2>`;
     let t = '';
     if (p.scene === 'hero') t += `<div class="gcount rv" ${ab(0.1, 0.22)}><b data-countx="${p.count}">0</b> <span>${rich(p.countLabel || '')}</span></div>`;

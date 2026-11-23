@@ -12,7 +12,7 @@
   function Kit(G) {
     const { C, esc, strip, rich, src, galCap } = G;
     const N = C.book.length, P = i => C.book[i];
-    const FB = { thesis: 'g10', view: 'g16' };
+    const FB = { thesis: 'g10', view: 'g23' };
     const SHORT = { hero: 'The doorway', dilemma: 'Two definitions', thesis: 'The dilemma', ia: 'Teller does not choose', ib: 'Pure personality', ic: 'The norms of beauty', iia: 'The door is his', iib: 'Before the door', iic: 'The cost around the picture', view: 'My view', conclusion: 'Conclusion' };
     const GROUPS = [{ id: 'open', name: 'Opening', idx: [0, 1, 2] }, { id: 'adm', name: 'I. Admittedly', idx: [3, 4, 5] }, { id: 'how', name: 'II. However', idx: [6, 7, 8] }, { id: 'end', name: 'Conclusion', idx: [9, 10] }];
     const K = {
