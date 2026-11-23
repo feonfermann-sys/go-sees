@@ -743,3 +743,9 @@ body.editing .bw .sl [data-bk]:hover{outline:1px dashed var(--rust);outline-offs
 .bk-end .be-go{display:inline-block;padding:14px 28px;border-radius:26px;background:var(--rust);color:#fff;text-decoration:none;font:500 14px var(--sans);letter-spacing:.01em}
 .bk-end [data-be]{font:400 11px var(--monof);letter-spacing:.14em;text-transform:uppercase;color:#7a7a7a;padding:6px 10px}
 .bk-end [data-be]:hover{color:var(--ink)}
+
+/* end of the book, quieter: two plain lines, no colour */
+.bk-end{background:rgba(255,255,255,.97)}
+.bk-end .be-btns{gap:22px}
+.bk-end .be-go{padding:0 0 4px;border-radius:0;background:none;color:var(--ink);font:500 clamp(20px,2.4vw,28px)/1.1 var(--display);letter-spacing:-.03em;border-bottom:1px solid var(--ink)}
+.bk-end [data-be]{font:400 11px var(--monof);letter-spacing:.14em;text-transform:uppercase;color:#9a9a9a}

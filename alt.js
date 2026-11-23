@@ -334,7 +334,7 @@
     }
     /* the end of the book: instead of cutting to the essay, fade in a quiet question */
     const endEl = document.createElement('div'); endEl.className = 'bk-end'; endEl.hidden = true;
-    endEl.innerHTML = `<div class="be-in"><div class="mono be-k">End of the book</div><h2>Keep reading?</h2><div class="be-btns"><a class="be-go" href="#/essay">Read the full essay →</a><button type="button" data-be="back">Back to the book</button><button type="button" data-be="again">Start again</button></div></div>`;
+    endEl.innerHTML = `<div class="be-btns"><a class="be-go" href="#/essay">Read the full essay</a><button type="button" data-be="back">Back to the book</button></div>`;
     bw.appendChild(endEl);
     let endOpen = false;
     const showEnd = () => { endOpen = true; endEl.hidden = false; void endEl.offsetWidth; endEl.classList.add('on'); };
