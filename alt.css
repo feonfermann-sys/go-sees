@@ -777,3 +777,4 @@ body.editing .bw .sl [data-bk]:hover{outline:1px dashed var(--rust);outline-offs
 .pg.tq2 .tqt .k{color:#fff}
 /* page 04 title: same size and weight as the other page titles */
 .bw .pg.dl.fn .fi{font:600 max(22px,calc(var(--u) * 3))/1.06 var(--display);letter-spacing:-.04em;width:calc(var(--u) * 36);top:calc(var(--v) * 18)}
+.bw .pg.dl.fn .fi{top:calc(var(--v) * 14)}
