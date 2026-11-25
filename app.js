@@ -12,10 +12,10 @@
   try { const r = await fetch('/api/content'); if (!r.ok) throw new Error('no api'); C = await r.json(); }
   catch (e) {
     /* published copy: no server, so read the saved text and switch editing off */
-    try { C = await (await fetch('content.json?v=202611250900')).json(); document.body.classList.add('static'); }
+    try { C = await (await fetch('content.json?v=202611251100')).json(); document.body.classList.add('static'); }
     catch (e2) { app.innerHTML = '<p style="padding:90px 40px">Could not load content.json. Start the server with <code>node server.js</code>.</p>'; return; }
   }
-  try { GAL = await (await fetch('img/go.json?v=202611250900')).json(); } catch (e) { GAL = []; }
+  try { GAL = await (await fetch('img/go.json?v=202611251100')).json(); } catch (e) { GAL = []; }
   const HIDE = ['g16.jpg', 'g20.jpg']; /* photographs kept out of the grid and the automatic picks */
   const galCap = {}; GAL.forEach(g => { galCap[g.file.replace('.jpg', '')] = g.caption; });
 
@@ -616,7 +616,7 @@
 
   document.addEventListener('input', e => {
     const el = e.target.closest && e.target.closest('[data-path]'); if (!el || !editing) return;
-    set(el.dataset.path, el.dataset.rich ? ser(el) : el.textContent.replace(/\s+/g, ' ').trim());
+    set(el.dataset.path, el.dataset.rich ? ser(el) : (el.dataset.sup ? [...el.childNodes].map(n => n.nodeType === 1 && n.tagName === 'SUP' ? '⁰¹²³'[+n.textContent] || n.textContent : n.textContent).join('') : el.textContent).replace(/\s+/g, ' ').trim());
     queueSave();
   });
   document.addEventListener('keydown', e => {
