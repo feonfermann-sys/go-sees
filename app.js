@@ -12,10 +12,10 @@
   try { const r = await fetch('/api/content'); if (!r.ok) throw new Error('no api'); C = await r.json(); }
   catch (e) {
     /* published copy: no server, so read the saved text and switch editing off */
-    try { C = await (await fetch('content.json?v=202611251100')).json(); document.body.classList.add('static'); }
+    try { C = await (await fetch('content.json?v=202611251900')).json(); document.body.classList.add('static'); }
     catch (e2) { app.innerHTML = '<p style="padding:90px 40px">Could not load content.json. Start the server with <code>node server.js</code>.</p>'; return; }
   }
-  try { GAL = await (await fetch('img/go.json?v=202611251100')).json(); } catch (e) { GAL = []; }
+  try { GAL = await (await fetch('img/go.json?v=202611251900')).json(); } catch (e) { GAL = []; }
   const HIDE = ['g16.jpg', 'g20.jpg']; /* photographs kept out of the grid and the automatic picks */
   const galCap = {}; GAL.forEach(g => { galCap[g.file.replace('.jpg', '')] = g.caption; });
 
@@ -723,7 +723,7 @@
   });
   function showContents() {
     const c = $('#contents');
-    c.innerHTML = `<ol><li style="border:0"><span class="mono">Explore</span></li>${C.book.map((p, i) => `<li><a data-scene="${i + 1}"><span class="mono">${String(i + 1).padStart(2, '0')}</span>${esc(strip(p.lead || p.kicker).slice(0, 70))}</a></li>`).join('')}<li style="border:0"><h3 class="mono">The full essay</h3></li>${C.essay.sections.filter(s => s.level === 2).map(s => `<li><a data-essaysec="${esc(s.id)}"><span class="mono">··</span>${esc(strip(s.heading))}</a></li>`).join('')}<li><a data-essaysec="references"><span class="mono">··</span>References</a></li></ol>`;
+    c.innerHTML = `<ol><li style="border:0"><span class="mono">Explore</span></li>${C.book.map((p, i) => `<li><a data-scene="${i + 1}"><span class="mono">${String(i + 1).padStart(2, '0')}</span>${i === 0 ? 'Intro.' : esc(strip(p.lead || p.kicker).slice(0, 70))}</a></li>`).join('')}<li style="border:0"><h3 class="mono">The full essay</h3></li>${C.essay.sections.filter(s => s.level === 2).map(s => `<li><a data-essaysec="${esc(s.id)}"><span class="mono">··</span>${esc(strip(s.heading))}</a></li>`).join('')}<li><a data-essaysec="references"><span class="mono">··</span>References</a></li></ol>`;
     c.hidden = false;
   }
 
