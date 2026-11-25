@@ -778,3 +778,10 @@ body.editing .bw .sl [data-bk]:hover{outline:1px dashed var(--rust);outline-offs
 /* page 04 title: same size and weight as the other page titles */
 .bw .pg.dl.fn .fi{font:600 max(22px,calc(var(--u) * 3))/1.06 var(--display);letter-spacing:-.04em;width:calc(var(--u) * 36);top:calc(var(--v) * 18)}
 .bw .pg.dl.fn .fi{top:calc(var(--v) * 14)}
+/* page 09 · facts as before, body in two columns */
+.bw .pg.tx.ch8 .tx{flex:1 1 auto !important;display:flex;flex-direction:column;overflow:visible;max-height:none}
+.bw .pg.tx.ch8 .x-body{margin-top:auto;width:calc(100% - var(--u) * 4);color:#333;font-size:max(11.5px,calc(var(--u) * 1.3));line-height:1.55;column-count:2;column-gap:calc(var(--u) * 2.2);column-rule:1px solid #dcdcd8;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+/* one body size everywhere (1.3u) */
+.bw .pg.tq2 .tqt .lg{font-size:max(12px,calc(var(--u) * 1.3))}
+.bw .pg.dl.fn .fns p{font-size:max(12px,calc(var(--u) * 1.3))}
+.bw .pg.tx.ch8 .x-facts li{font-size:max(12px,calc(var(--u) * 1.3))}
