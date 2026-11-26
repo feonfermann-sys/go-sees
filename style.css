@@ -508,3 +508,14 @@ body.static .editbar,body.static #editToggle{display:none !important}
 body.inessay .top{background:none;backdrop-filter:none;border-bottom:0}
 body.inessay .top::before{content:"";position:absolute;inset:0;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:-1;pointer-events:none}
 @media (max-width:700px){.top .switch{right:12px;bottom:calc(16px + env(safe-area-inset-bottom))}}
+
+/* interviews: the film only, no YouTube furniture. Sound label follows the pointer. */
+.clipbox{cursor:none}
+.clipbox img.poster{display:none}
+.clipbox iframe{transform:scale(1.22);transform-origin:50% 50%}
+.clipbox .tag{display:none}
+.clipbox .snd{display:none}
+.clipcap{margin-top:8px;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#8a8a8a}
+.snd-cur{position:fixed;left:0;top:0;z-index:200;pointer-events:none;opacity:0;transition:opacity .15s;font:400 9.5px/1 var(--monof);letter-spacing:.14em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.78);padding:6px 9px;border-radius:12px;white-space:nowrap}
+.snd-cur.on{opacity:1}
+@media (hover:none){.clipbox{cursor:auto}.clipbox .snd{display:block;right:6px;bottom:6px;font-size:9px;padding:5px 8px}}

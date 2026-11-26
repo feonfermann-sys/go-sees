@@ -12,10 +12,10 @@
   try { const r = await fetch('/api/content'); if (!r.ok) throw new Error('no api'); C = await r.json(); }
   catch (e) {
     /* published copy: no server, so read the saved text and switch editing off */
-    try { C = await (await fetch('content.json?v=202611251900')).json(); document.body.classList.add('static'); }
+    try { C = await (await fetch('content.json?v=202611252300')).json(); document.body.classList.add('static'); }
     catch (e2) { app.innerHTML = '<p style="padding:90px 40px">Could not load content.json. Start the server with <code>node server.js</code>.</p>'; return; }
   }
-  try { GAL = await (await fetch('img/go.json?v=202611251900')).json(); } catch (e) { GAL = []; }
+  try { GAL = await (await fetch('img/go.json?v=202611252300')).json(); } catch (e) { GAL = []; }
   const HIDE = ['g16.jpg', 'g20.jpg']; /* photographs kept out of the grid and the automatic picks */
   const galCap = {}; GAL.forEach(g => { galCap[g.file.replace('.jpg', '')] = g.caption; });
 
@@ -85,10 +85,10 @@
     const c = C.cards[id];
     if (!c) return '';
     if (c.kind === 'video') {
-      return `<div class="clip" data-clip="${esc(id)}"><div class="clipbox"><img class="poster" alt="" src="https://i.ytimg.com/vi/${esc(c.youtube)}/hqdefault.jpg"><div class="player"></div><span class="tag mono">Teller · interview, cut</span><button class="snd" type="button">Sound off</button></div><div class="clipcap mono">${esc(c.text)}</div></div>`;
+      return `<div class="clip" data-clip="${esc(id)}"><div class="clipbox"><div class="player"></div><button class="snd" type="button">Sound off</button></div><div class="clipcap mono">Teller interview</div></div>`;
     }
     if (c.kind === 'slot' && c.file) {
-      return `<div class="clip"><div class="clipbox"><video src="media/${esc(c.file)}" autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video><span class="tag mono">Interview, cut</span></div><div class="clipcap mono">${esc(c.text)}</div></div>`;
+      return `<div class="clip"><div class="clipbox"><video src="media/${esc(c.file)}" autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video></div><div class="clipcap mono">Teller interview</div></div>`;
     }
     return `<div class="clip"><div class="slotbox">${esc(c.text)}</div></div>`;
   }
@@ -111,6 +111,7 @@
     el.__pl = []; el.__clips = false;
     $$('.clipbox', el).forEach(b => { b.classList.remove('ready'); if (!$('.player', b)) { const d = document.createElement('div'); d.className = 'player'; b.insertBefore(d, $('.tag', b)); } });
   }
+  const sndCur = (() => { const d = document.createElement('div'); d.className = 'snd-cur mono'; document.addEventListener('DOMContentLoaded', () => document.body.appendChild(d)); if (document.body) document.body.appendChild(d); return d; })();
   async function startClips(el) {
     const clips = $$('.clip[data-clip]', el);
     if (!clips.length || el.__clips) return;
@@ -126,9 +127,9 @@
       const pl = new YT.Player(host, {
         videoId: c.youtube, playerVars: vars,
         events: {
-          onReady: e => { e.target.mute(); e.target.playVideo(); },
+          onReady: e => { e.target.mute(); e.target.seekTo(segs[0][0], true); e.target.playVideo(); },
           onStateChange: e => {
-            if (e.data === 1 && !shown) { shown = true; setTimeout(() => box.classList.add('ready'), 900); }
+            if (e.data === 1 && !shown) { shown = true; const t0 = Date.now(), w = setInterval(() => { let ok = false; try { ok = pl.getCurrentTime() >= segs[0][0] + 0.3; } catch (er) {} if (ok || Date.now() - t0 > 4000) { clearInterval(w); setTimeout(() => box.classList.add('ready'), 250); } }, 120); }
             if (e.data === 0) { si = 0; e.target.seekTo(segs[0][0], true); e.target.playVideo(); }
           }
         }
@@ -138,7 +139,12 @@
         try { const t = pl.getCurrentTime(); const [s, e] = segs[si]; if (e > s && t >= e - 0.35) { si = (si + 1) % segs.length; pl.seekTo(segs[si][0], true); } } catch (e) {}
       }, 250);
       el.__pl.push(pl);
-      snd.addEventListener('click', ev => { ev.stopPropagation(); try { if (pl.isMuted()) { pl.unMute(); pl.setVolume(100); snd.textContent = 'Sound on'; } else { pl.mute(); snd.textContent = 'Sound off'; } } catch (e) {} });
+      let soundOn = false; const lbl = () => (soundOn ? 'Sound on' : 'Sound off');
+      const toggle = ev => { ev.stopPropagation(); soundOn = !soundOn; try { if (soundOn) { pl.unMute(); pl.setVolume(100); } else pl.mute(); } catch (er) {} snd.textContent = soundOn ? 'Sound on' : 'Sound off'; sndCur.textContent = snd.textContent; };
+      snd.addEventListener('click', toggle); box.addEventListener('click', toggle);
+      box.addEventListener('mouseenter', () => { sndCur.textContent = lbl(); sndCur.classList.add('on'); });
+      box.addEventListener('mouseleave', () => sndCur.classList.remove('on'));
+      box.addEventListener('mousemove', ev => { sndCur.style.transform = `translate(${ev.clientX + 14}px,${ev.clientY + 12}px)`; });
     });
   }
 

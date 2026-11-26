@@ -794,3 +794,4 @@ body.editing .bw .sl [data-bk]:hover{outline:1px dashed var(--rust);outline-offs
 .bw .pg.dl.fn .fns i,.pg.dl.fn .fi sup.fm{display:none}
 .bw .pg.dl.fn .fns p{padding-left:0}
 .bw .pg.dr .drw .x-body{display:none}
+.bw .clipcap{display:block;margin-top:8px;font-size:max(7.5px,calc(var(--u) * .78));text-align:left}
