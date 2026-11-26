@@ -12,10 +12,10 @@
   try { const r = await fetch('/api/content'); if (!r.ok) throw new Error('no api'); C = await r.json(); }
   catch (e) {
     /* published copy: no server, so read the saved text and switch editing off */
-    try { C = await (await fetch('content.json?v=202611252300')).json(); document.body.classList.add('static'); }
+    try { C = await (await fetch('content.json?v=202611260300')).json(); document.body.classList.add('static'); }
     catch (e2) { app.innerHTML = '<p style="padding:90px 40px">Could not load content.json. Start the server with <code>node server.js</code>.</p>'; return; }
   }
-  try { GAL = await (await fetch('img/go.json?v=202611252300')).json(); } catch (e) { GAL = []; }
+  try { GAL = await (await fetch('img/go.json?v=202611260300')).json(); } catch (e) { GAL = []; }
   const HIDE = ['g16.jpg', 'g20.jpg']; /* photographs kept out of the grid and the automatic picks */
   const galCap = {}; GAL.forEach(g => { galCap[g.file.replace('.jpg', '')] = g.caption; });
 
@@ -84,6 +84,9 @@
   function clipHTML(id) {
     const c = C.cards[id];
     if (!c) return '';
+    if (c.kind === 'video' && c.file) {
+      return `<div class="clip" data-clip="${esc(id)}" data-local="1"><div class="clipbox"><video src="media/${esc(c.file)}" muted loop playsinline preload="auto"><track kind="captions" srclang="en" label="English" default src="media/${esc(c.file.replace(/\.mp4$/, '.vtt'))}"></video><button class="snd" type="button">Sound off</button></div><div class="clipcap mono">Teller interview</div></div>`;
+    }
     if (c.kind === 'video') {
       return `<div class="clip" data-clip="${esc(id)}"><div class="clipbox"><div class="player"></div><button class="snd" type="button">Sound off</button></div><div class="clipcap mono">Teller interview</div></div>`;
     }
@@ -109,16 +112,30 @@
   function stopClips(el) {
     (el.__pl || []).forEach(p => { try { clearInterval(p.__iv); p.destroy(); } catch (e) {} });
     el.__pl = []; el.__clips = false;
-    $$('.clipbox', el).forEach(b => { b.classList.remove('ready'); if (!$('.player', b)) { const d = document.createElement('div'); d.className = 'player'; b.insertBefore(d, $('.tag', b)); } });
+    $$('video', el).forEach(v => { try { v.pause(); v.muted = true; } catch (e) {} });
+    $$('.clipbox', el).forEach(b => { b.classList.remove('ready'); if (b.closest('[data-local]')) return; if (!$('.player', b)) { const d = document.createElement('div'); d.className = 'player'; b.insertBefore(d, $('.tag', b)); } });
   }
   const sndCur = (() => { const d = document.createElement('div'); d.className = 'snd-cur mono'; document.addEventListener('DOMContentLoaded', () => document.body.appendChild(d)); if (document.body) document.body.appendChild(d); return d; })();
   async function startClips(el) {
     const clips = $$('.clip[data-clip]', el);
     if (!clips.length || el.__clips) return;
     el.__clips = true; el.__pl = [];
+    clips.forEach(cl => {
+      if (!cl.dataset.local) return;
+      const v = $('video', cl), box = $('.clipbox', cl), snd = $('.snd', cl); if (!v) return;
+      let soundOn = false; v.muted = true; v.currentTime = 0; const pr = v.play(); if (pr && pr.catch) pr.catch(() => {});
+      const lbl = () => (soundOn ? 'Sound on' : 'Sound off');
+      const toggle = ev => { ev.stopPropagation(); soundOn = !soundOn; v.muted = !soundOn; if (soundOn) v.volume = 1; snd.textContent = lbl(); sndCur.textContent = lbl(); };
+      snd.onclick = toggle; box.onclick = toggle;
+      box.onmouseenter = () => { sndCur.textContent = lbl(); sndCur.classList.add('on'); };
+      box.onmouseleave = () => sndCur.classList.remove('on');
+      box.onmousemove = ev => { sndCur.style.transform = `translate(${ev.clientX + 14}px,${ev.clientY + 12}px)`; };
+    });
+    if (!clips.some(cl => !cl.dataset.local)) return;
     let YT; try { YT = await loadYT(); } catch (e) { return; }
     if (!el.__clips) return;
     clips.forEach(cl => {
+      if (cl.dataset.local) return;
       const c = C.cards[cl.dataset.clip]; if (!c || c.kind !== 'video') return;
       const host = $('.player', cl), box = $('.clipbox', cl), snd = $('.snd', cl);
       if (!host) return;
@@ -582,7 +599,8 @@
       h = `<div class="mono lab">Voice · ${esc(c.short)}</div><p class="quote">${esc(c.text)}</p><p class="note">${esc(c.cite || '')}</p>${c.url ? `<a class="mono lnk" href="${esc(c.url)}" target="_blank" rel="noopener">Read on the source →</a>` : ''}`;
     } else if (c.kind === 'video') {
       const sg = parseSegs(c)[0];
-      h = `<div class="mono lab">Voice · video</div><div class="video" data-yt="${esc(c.youtube)}" data-start="${sg[0]}" data-end="${sg[1] || 0}"><img alt="" src="https://i.ytimg.com/vi/${esc(c.youtube)}/hqdefault.jpg"><button class="playbtn" type="button" aria-label="Play">▶</button></div><p class="ref">${esc(c.text)}</p><p class="note">${esc(c.cite || '')}</p><a class="mono lnk" href="https://www.youtube.com/watch?v=${esc(c.youtube)}" target="_blank" rel="noopener">Open on YouTube →</a>`;
+      if (c.file) h = `<div class="mono lab">Voice · video</div><video class="cvid" src="media/${esc(c.file)}" controls autoplay playsinline><track kind="captions" srclang="en" label="English" default src="media/${esc(c.file.replace(/\.mp4$/, '.vtt'))}"></video><p class="ref">${esc(c.text)}</p><p class="note">${esc(c.cite || '')}</p><a class="mono lnk" href="https://www.youtube.com/watch?v=${esc(c.youtube)}" target="_blank" rel="noopener">Source on YouTube →</a>`;
+      else h = `<div class="mono lab">Voice · video</div><div class="video" data-yt="${esc(c.youtube)}" data-start="${sg[0]}" data-end="${sg[1] || 0}"><img alt="" src="https://i.ytimg.com/vi/${esc(c.youtube)}/hqdefault.jpg"><button class="playbtn" type="button" aria-label="Play">▶</button></div><p class="ref">${esc(c.text)}</p><p class="note">${esc(c.cite || '')}</p><a class="mono lnk" href="https://www.youtube.com/watch?v=${esc(c.youtube)}" target="_blank" rel="noopener">Open on YouTube →</a>`;
     } else if (c.kind === 'slot') {
       const f = c.file ? esc(c.file) : '';
       const media = f ? (/\.(mp3|m4a|wav)$/i.test(f) ? `<audio controls src="media/${f}"></audio>` : `<video controls src="media/${f}"></video>`) : '';

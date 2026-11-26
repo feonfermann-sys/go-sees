@@ -114,7 +114,8 @@
       "start": 35,
       "text": "Juergen Teller – Studio Visit | TateShots",
       "cite": "Tate, TateShots, “Juergen Teller – Studio Visit”.",
-      "end": 102
+      "end": 102,
+      "file": "tate-video.mp4"
     },
     "gaze": {
       "kind": "image",
@@ -134,7 +135,8 @@
       "end": 186,
       "segments": "",
       "text": "The power he held as a man and as a photographer.",
-      "cite": "Tate, TateShots, “Juergen Teller – Studio Visit”. Cut for this page."
+      "cite": "Tate, TateShots, “Juergen Teller – Studio Visit”. Cut for this page.",
+      "file": "tate-power.mp4"
     },
     "tate-choose": {
       "kind": "video",
@@ -144,7 +146,8 @@
       "end": 90.1,
       "segments": "",
       "text": "Teller, on turning it upside down: “just send me everyone”.",
-      "cite": "Tate, TateShots, “Juergen Teller – Studio Visit”. Cut for this page."
+      "cite": "Tate, TateShots, “Juergen Teller – Studio Visit”. Cut for this page.",
+      "file": "tate-choose.mp4"
     },
     "door-quote": {
       "kind": "quote",
@@ -169,7 +172,8 @@
       "end": 668,
       "segments": "506-527, 584-668",
       "text": "Teller, on Go-Sees: “the first moment when I started to work conceptually”.",
-      "cite": "Art Basel, “Conversations | The 90s: Juergen Teller”, guest curated by Edward Enninful. Cut for this page."
+      "cite": "Art Basel, “Conversations | The 90s: Juergen Teller”, guest curated by Edward Enninful. Cut for this page.",
+      "file": "teller-artbasel.mp4"
     },
     "system-hu": {
       "kind": "quote",
